@@ -1,0 +1,6 @@
+{
+  "name": "ScamShield AI",
+  "description": "Intelligent cybersecurity assistant to detect phishing, smishing, scam messages, and suspicious URLs across English, Urdu, and Roman Urdu.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  scamshield-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: scamshield_app
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - DATABASE_URL=postgres://scamshield:secure_password_replace_in_prod@postgres:5432/scamshield_db
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:16-alpine
+    container_name: scamshield_postgres
+    environment:
+      - POSTGRES_USER=scamshield
+      - POSTGRES_PASSWORD=secure_password_replace_in_prod
+      - POSTGRES_DB=scamshield_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./migrations/001_initial_schema.sql:/docker-entrypoint-initdb.d/001_initial_schema.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U scamshield -d scamshield_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+volumes:
+  pgdata:
+    driver: local
