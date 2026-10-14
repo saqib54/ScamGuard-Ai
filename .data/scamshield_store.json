@@ -1,82 +1,37 @@
 {
   "users": [
     {
-      "id": "usr_demo_101",
-      "email": "analyst@scamshield.ai",
-      "password_hash": "af0ad06a37cbccded263aa05da8f8616:a62a06d5da44b1a0683aeeccaf6012a5e11f2ed941e826e4c7d36de9c897116d7f924114e5bc6ad252ba0aa7e39f7cc58de6123c940fbebe1a34531898f05686",
-      "name": "Cyber Defense Analyst",
-      "role": "analyst",
-      "created_at": "2026-10-13T09:55:22.897Z",
-      "updated_at": "2026-10-13T09:55:22.897Z"
+      "id": "usr_f89f9c48-aca1-4880-b01c-e1419ac9d787",
+      "email": "saqib@gmail.com",
+      "password_hash": "d8597af25c474bc3c56fd13c59ffd4c2:13c06afaea2ee38ce274c33f2ca83dee0d55b588eef42fa1c43a3755657d686c3f043904513995cb4b862d2ad7c6dc468ec352ae890687f99f4858d33f049c4d",
+      "name": "Saqib",
+      "role": "user",
+      "created_at": "2026-10-14T13:22:30.336Z",
+      "updated_at": "2026-10-14T13:22:30.336Z"
     },
     {
-      "id": "usr_4cd33931-5c48-405b-be95-d4239b3d84b7",
-      "email": "tester_1791885327137@example.com",
-      "password_hash": "495393a114d9f49d520bc0bc16830835:e2c451b7c8219a4671ebef6667ae2a5b554352ea06c366c543c6c247ef2028885a17d4ea27bf09a1315ab5a68f95a34f549063e8d8af6d5ac8d60db0c0f8d439",
+      "id": "usr_5c9e0ecf-3a0f-463c-a594-a2591c5429c1",
+      "email": "tester_1791986170343@example.com",
+      "password_hash": "bff9266926802cce51215391b0176227:fe5d4a9a1384cce4ecfa26d281ee2224093f0b943c36b135cd6fa85f75ce0969b6f8132f8716905646a011711c212275abad81bef622ccbc00e0709c5ae5925d",
       "name": "Integration Tester",
       "role": "user",
-      "created_at": "2026-10-13T09:55:27.206Z",
-      "updated_at": "2026-10-13T09:55:27.206Z"
+      "created_at": "2026-10-14T13:56:10.419Z",
+      "updated_at": "2026-10-14T13:56:10.419Z"
     },
     {
-      "id": "usr_a80262d4-f746-4a4a-be18-8f05aeddb0b5",
-      "email": "tester_1791885355997@example.com",
-      "password_hash": "09eb6e2a3d394add361a7bc6a236d54a:e75f2db00a582587788cf85a1cd1cfa706c66ce3a209c8e48e9a3118b35b023968c3490c1e8ad5581cc6c2449ba3018777ea3654c9e18478cda1164bdf08a44e",
+      "id": "usr_d814f1c5-03f0-4f3d-b215-d26d3bba0b12",
+      "email": "tester_1791986203114@example.com",
+      "password_hash": "b0be074de13d570fa4ba4d57e20964bb:55a4c46d9e968b6002183b91aac537ed52c9d74b06f0400ade6de479abb5d5540515a56662162aa7074ae411a298ef71dc5e51ebd1c655b0fe7ed6c1f845c473",
       "name": "Integration Tester",
       "role": "user",
-      "created_at": "2026-10-13T09:55:56.094Z",
-      "updated_at": "2026-10-13T09:55:56.094Z"
-    },
-    {
-      "id": "usr_dbcd0e20-3ebe-45dc-8217-57af81c1a1ed",
-      "email": "tester_1791885470468@example.com",
-      "password_hash": "cf533e99076a6dbfdf6a8555505a6109:b4db5ed20f30847c58507bf5571c5b0d0d05dd80a61f88bc3d3c0fc16133089af438156f960b0a76320c8758c86b45b57f0cac562fc62e05479f50387427f4ac",
-      "name": "Integration Tester",
-      "role": "user",
-      "created_at": "2026-10-13T09:57:50.545Z",
-      "updated_at": "2026-10-13T09:57:50.545Z"
-    },
-    {
-      "id": "usr_9fb9b835-98a6-46bd-a919-4db3c459c611",
-      "email": "tester_1791886736912@example.com",
-      "password_hash": "5528db0c1dee153ae5f3b00db1af6105:d0052ddec3a97e06dfc79614946cc95f3562ae32b634fe2812b97d0261451100ba0223fc3740b736b7533841e6f21b5913c15da8a5dbfd3c47fa4152fb2e989b",
-      "name": "Integration Tester",
-      "role": "user",
-      "created_at": "2026-10-13T10:18:56.989Z",
-      "updated_at": "2026-10-13T10:18:56.989Z"
-    },
-    {
-      "id": "usr_333e45f6-1d92-4266-b0c5-252d5e03ba9b",
-      "email": "tester_1791886753821@example.com",
-      "password_hash": "44817649dada545309e14673ed86d7a6:c6e654ad64bbd1817fda2bfee7602b8df06b191c5629d0a99a89529e2ddf6bc7dba73cfe1001e3abd45c768f12bced85aa4d08660fac8353816e23abbec620d5",
-      "name": "Integration Tester",
-      "role": "user",
-      "created_at": "2026-10-13T10:19:13.896Z",
-      "updated_at": "2026-10-13T10:19:13.896Z"
-    },
-    {
-      "id": "usr_9b6ed5d3-c8b2-49dd-bfdc-dfaeb5914cec",
-      "email": "tester_1791886810478@example.com",
-      "password_hash": "30aadd635b5d1aa7abb8b303f22d66a6:84d5db07ef1409853679c47179a40ba2531270a0f723709eba30ff4dbcf97a691440c42ba7c50efc139fbe95ec4c065849b408fa2ccc5f9a765a2e140138e0e1",
-      "name": "Integration Tester",
-      "role": "user",
-      "created_at": "2026-10-13T10:20:10.582Z",
-      "updated_at": "2026-10-13T10:20:10.582Z"
-    },
-    {
-      "id": "usr_367d0a0d-d30e-490c-b086-a3c3bc377ee4",
-      "email": "tester_1791886905775@example.com",
-      "password_hash": "fc23501fbf9954255e70018423ba6e21:542ad7c69e96815b94175f2440a873f3520999cc09a45f4586beff95f1cb953d7037f5926bf4a73e01f5d455fb360f41262fb9a5b517014e5a882f26b47f726d",
-      "name": "Integration Tester",
-      "role": "user",
-      "created_at": "2026-10-13T10:21:45.865Z",
-      "updated_at": "2026-10-13T10:21:45.865Z"
+      "created_at": "2026-10-14T13:56:43.185Z",
+      "updated_at": "2026-10-14T13:56:43.185Z"
     }
   ],
   "analyses": [
     {
       "id": "scan_seed_001",
-      "user_id": "usr_demo_101",
+      "user_id": null,
       "input_type": "sms",
       "detected_language": "ru",
       "content_snippet": "Apka Benazir Income Support Program (BISP) 25,000 rupay manzoor ho gaya hai. Abhi rabta karein 0301-XXXXXXX",
@@ -112,11 +67,11 @@
         "Block the sender and report to telecom authority / FIA Cyber Crime Wing."
       ],
       "engine_type": "hybrid",
-      "created_at": "2026-10-13T05:55:22.898Z"
+      "created_at": "2026-10-14T09:20:52.888Z"
     },
     {
       "id": "scan_seed_002",
-      "user_id": "usr_demo_101",
+      "user_id": null,
       "input_type": "sms",
       "detected_language": "en",
       "content_snippet": "URGENT: Your HBL online banking access will be suspended within 2 hours. Click http://hbl-security-portal.online to verify your CNIC and OTP.",
@@ -171,11 +126,11 @@
         ]
       },
       "engine_type": "hybrid",
-      "created_at": "2026-10-12T09:55:22.898Z"
+      "created_at": "2026-10-13T13:20:52.888Z"
     },
     {
       "id": "scan_seed_003",
-      "user_id": "usr_demo_101",
+      "user_id": null,
       "input_type": "sms",
       "detected_language": "en",
       "content_snippet": "Your verification code is 492810. Valid for 5 minutes. Do not share this code with anyone, including bank representatives.",
@@ -192,232 +147,235 @@
         "Never disclose this code to anyone who calls or messages asking for it."
       ],
       "engine_type": "heuristics",
-      "created_at": "2026-10-11T09:55:22.898Z"
+      "created_at": "2026-10-12T13:20:52.888Z"
     },
     {
-      "id": "scan_1791885327127_875b3f87",
-      "user_id": "test_integration_user",
-      "input_type": "sms",
-      "detected_language": "ru",
-      "content_snippet": "URGENT: Your bank account will be blocked today unless you click http://suspicious-bank-login.xyz",
-      "content_hash": "7fdfbd07ca76eec8e3e1661d42141f59bef2656602cf1ac392117931ae959843",
-      "risk_score": 16,
-      "risk_level": "low",
-      "indicators": [],
-      "tactics": [
-        "Suspicious URL Engineering"
-      ],
-      "recommendations": [
-        "No obvious red flags detected, but maintain general vigilance.",
-        "Remember that legitimate organizations never ask for your confidential credentials via message.",
-        "URL Alert: Unencrypted HTTP protocol used; legitimate sensitive services require HTTPS.",
-        "URL Alert: Domain uses high-abuse top-level domain (.xyz) frequently leveraged for disposable phishing sites."
-      ],
-      "engine_type": "heuristics",
-      "created_at": "2026-10-13T09:55:27.127Z"
-    },
-    {
-      "id": "scan_1791885355993_95ed8de1",
-      "user_id": "test_integration_user",
-      "input_type": "sms",
-      "detected_language": "ru",
-      "content_snippet": "URGENT: Your bank account will be blocked today unless you click http://suspicious-bank-login.xyz",
-      "content_hash": "7fdfbd07ca76eec8e3e1661d42141f59bef2656602cf1ac392117931ae959843",
-      "risk_score": 51,
-      "risk_level": "elevated",
-      "indicators": [
-        {
-          "id": "rule_account_threat",
-          "title": "Manufactured Urgency & Account Suspension Threat",
-          "description": "Pressures the recipient with imminent account termination, legal repercussions, or service disruption to force immediate compliance without critical reflection.",
-          "severity": "high",
-          "category": "Psychological Coercion",
-          "evidence": "account will be blocked today",
-          "weight": 35
-        }
-      ],
-      "tactics": [
-        "Psychological Coercion",
-        "Suspicious URL Engineering"
-      ],
-      "recommendations": [
-        "Exercise caution. Independently verify the message through the official service app or website.",
-        "Do not use phone numbers or web addresses provided inside this unsolicited message.",
-        "URL Alert: Unencrypted HTTP protocol used; legitimate sensitive services require HTTPS.",
-        "URL Alert: Domain uses high-abuse top-level domain (.xyz) frequently leveraged for disposable phishing sites."
-      ],
-      "engine_type": "heuristics",
-      "created_at": "2026-10-13T09:55:55.993Z"
-    },
-    {
-      "id": "scan_1791885470464_adfe8ce3",
-      "user_id": "test_integration_user",
-      "input_type": "sms",
-      "detected_language": "ru",
-      "content_snippet": "URGENT: Your bank account will be blocked today unless you click http://suspicious-bank-login.xyz",
-      "content_hash": "7fdfbd07ca76eec8e3e1661d42141f59bef2656602cf1ac392117931ae959843",
-      "risk_score": 51,
-      "risk_level": "elevated",
-      "indicators": [
-        {
-          "id": "rule_account_threat",
-          "title": "Manufactured Urgency & Account Suspension Threat",
-          "description": "Pressures the recipient with imminent account termination, legal repercussions, or service disruption to force immediate compliance without critical reflection.",
-          "severity": "high",
-          "category": "Psychological Coercion",
-          "evidence": "account will be blocked today",
-          "weight": 35
-        }
-      ],
-      "tactics": [
-        "Psychological Coercion",
-        "Suspicious URL Engineering"
-      ],
-      "recommendations": [
-        "Exercise caution. Independently verify the message through the official service app or website.",
-        "Do not use phone numbers or web addresses provided inside this unsolicited message.",
-        "URL Alert: Unencrypted HTTP protocol used; legitimate sensitive services require HTTPS.",
-        "URL Alert: Domain uses high-abuse top-level domain (.xyz) frequently leveraged for disposable phishing sites."
-      ],
-      "engine_type": "heuristics",
-      "created_at": "2026-10-13T09:57:50.464Z"
-    },
-    {
-      "id": "scan_1791885499526_0d36fa3f",
+      "id": "scan_1791985182060_69ce3316",
       "user_id": null,
       "input_type": "sms",
       "detected_language": "ru",
-      "content_snippet": "Aapka Benazir Income Support Program 25000 rupay inaam nikla hai rabta karein 0301-1234567",
-      "content_hash": "3245c7f26b9a414eec08524bc7c9165034421a205251b3f5108e5e56098a1689",
+      "content_snippet": "URGENT: Click http://hbl-security-portal.online to unfreeze CNIC",
+      "content_hash": "3e1bd2eda7302c007a0d2ba00811f14410d1b92cc471011578e6597150746370",
+      "risk_score": 92,
+      "risk_level": "critical",
+      "indicators": [
+        {
+          "id": "ind_blacklist_flagged",
+          "title": "Flagged on Public Blacklist (OpenPhish Community Intelligence, Spamhaus DBL & SURBL, ThreatFox IoC Engine, CryptoScamDB & FinFraud Blacklist)",
+          "description": "CRITICAL WARNING: This URL is actively listed on 4 global cybersecurity blacklist(s) including OpenPhish Community Intelligence, Spamhaus DBL & SURBL, ThreatFox IoC Engine, CryptoScamDB & FinFraud Blacklist. Visiting this domain poses an immediate risk of credential theft or malware download.",
+          "severity": "critical",
+          "category": "Public Blacklist Verification",
+          "evidence": "http://hbl-security-portal.online",
+          "weight": 60
+        }
+      ],
+      "tactics": [
+        "Public Cybersecurity Blacklist Match",
+        "Suspicious URL Engineering"
+      ],
+      "recommendations": [
+        "DO NOT OPEN OR CLICK: This link is actively blacklisted on global threat feeds (URLhaus / OpenPhish / Spamhaus).",
+        "Exercise caution. Independently verify the message through the official service app or website.",
+        "Do not use phone numbers or web addresses provided inside this unsolicited message.",
+        "URL Alert: Unencrypted HTTP protocol used; legitimate sensitive services require HTTPS.",
+        "URL Alert: Domain uses high-abuse top-level domain (.online) frequently leveraged for disposable phishing sites.",
+        "URL Alert: Appears to impersonate \"HBL Bank\" within an unofficial domain name (\"hbl-security-portal.online\").",
+        "URL Alert: Listed on public cybersecurity blacklists: CRITICAL WARNING: This URL is actively listed on 4 global cybersecurity blacklist(s) including OpenPhish Community Intelligence, Spamhaus DBL & SURBL, ThreatFox IoC Engine, CryptoScamDB & FinFraud Blacklist. Visiting this domain poses an immediate risk of credential theft or malware download."
+      ],
+      "url_details": {
+        "rawUrl": "http://hbl-security-portal.online",
+        "hostname": "hbl-security-portal.online",
+        "protocol": "http:",
+        "isIpAddress": false,
+        "hasDeceptiveTokens": true,
+        "warnings": [
+          "Unencrypted HTTP protocol used; legitimate sensitive services require HTTPS.",
+          "Domain uses high-abuse top-level domain (.online) frequently leveraged for disposable phishing sites.",
+          "Appears to impersonate \"HBL Bank\" within an unofficial domain name (\"hbl-security-portal.online\")."
+        ]
+      },
+      "url_reputation": {
+        "queriedUrl": "http://hbl-security-portal.online",
+        "hostname": "hbl-security-portal.online",
+        "isBlacklisted": true,
+        "overallVerdict": "malicious",
+        "threatCategory": "Brand Impersonation / Credential Harvester",
+        "riskScoreModifier": 65,
+        "blacklists": [
+          {
+            "name": "Abuse.ch URLhaus",
+            "authority": "Swiss Federal Threat Intelligence & Spamhaus Project",
+            "status": "clean",
+            "details": "Reputation check completed cleanly.",
+            "queryTimeMs": 859,
+            "referenceUrl": "https://urlhaus.abuse.ch"
+          },
+          {
+            "name": "OpenPhish Community Intelligence",
+            "authority": "OpenPhish Global Anti-Phishing Feed",
+            "status": "listed",
+            "threatType": "Brand Impersonation / Credential Harvester",
+            "details": "Matches active phishing attack pattern targeted at financial/banking accounts.",
+            "queryTimeMs": 32,
+            "referenceUrl": "https://openphish.com"
+          },
+          {
+            "name": "Spamhaus DBL & SURBL",
+            "authority": "The Spamhaus Project & SURBL Reputation Consortium",
+            "status": "listed",
+            "threatType": "Malicious Deceptive Domain (Spam/Phishing)",
+            "details": "Domain is classified under malicious snowshoe / deceptive domain blocklist.",
+            "queryTimeMs": 37,
+            "referenceUrl": "https://www.spamhaus.org/dbl/"
+          },
+          {
+            "name": "ThreatFox IoC Engine",
+            "authority": "Abuse.ch Indicators of Compromise Exchange",
+            "status": "listed",
+            "threatType": "C2 / Fraudulent Redirect Endpoint",
+            "details": "Known Indicator of Compromise associated with social engineering and account takeover campaigns.",
+            "queryTimeMs": 28,
+            "referenceUrl": "https://threatfox.abuse.ch"
+          },
+          {
+            "name": "CryptoScamDB & FinFraud Blacklist",
+            "authority": "Global Anti-Fraud & Banking Protection Database",
+            "status": "listed",
+            "threatType": "Financial Phishing / Fake Wallet Portal",
+            "details": "Impersonates licensed financial services or governmental welfare distributions.",
+            "queryTimeMs": 30,
+            "referenceUrl": "https://cryptoscamdb.org"
+          }
+        ],
+        "summary": "CRITICAL WARNING: This URL is actively listed on 4 global cybersecurity blacklist(s) including OpenPhish Community Intelligence, Spamhaus DBL & SURBL, ThreatFox IoC Engine, CryptoScamDB & FinFraud Blacklist. Visiting this domain poses an immediate risk of credential theft or malware download.",
+        "checkedAt": "2026-10-14T13:39:29.070Z",
+        "cached": true
+      },
+      "engine_type": "heuristics",
+      "created_at": "2026-10-14T13:39:42.060Z"
+    },
+    {
+      "id": "scan_1791986170335_27edc2f4",
+      "user_id": "test_integration_user",
+      "input_type": "sms",
+      "detected_language": "ru",
+      "content_snippet": "URGENT: Your bank account will be blocked today unless you click http://suspicious-bank-login.xyz",
+      "content_hash": "7fdfbd07ca76eec8e3e1661d42141f59bef2656602cf1ac392117931ae959843",
+      "risk_score": 51,
+      "risk_level": "elevated",
+      "indicators": [
+        {
+          "id": "rule_account_threat",
+          "title": "Manufactured Urgency & Account Suspension Threat",
+          "description": "Pressures the recipient with imminent account termination, legal repercussions, or service disruption to force immediate compliance without critical reflection.",
+          "severity": "high",
+          "category": "Psychological Coercion",
+          "evidence": "account will be blocked today",
+          "weight": 35
+        }
+      ],
+      "tactics": [
+        "Psychological Coercion",
+        "Suspicious URL Engineering"
+      ],
+      "recommendations": [
+        "Exercise caution. Independently verify the message through the official service app or website.",
+        "Do not use phone numbers or web addresses provided inside this unsolicited message.",
+        "URL Alert: Unencrypted HTTP protocol used; legitimate sensitive services require HTTPS.",
+        "URL Alert: Domain uses high-abuse top-level domain (.xyz) frequently leveraged for disposable phishing sites."
+      ],
+      "engine_type": "heuristics",
+      "created_at": "2026-10-14T13:56:10.335Z"
+    },
+    {
+      "id": "scan_1791986170584_c0e38165",
+      "user_id": "test_screenshot_user",
+      "input_type": "screenshot",
+      "detected_language": "en",
+      "content_snippet": "Detected fake bank alert in screenshot",
+      "content_hash": "hash_screenshot_123",
+      "risk_score": 95,
+      "risk_level": "critical",
+      "indicators": [
+        {
+          "id": "fake_logo_01",
+          "title": "Counterfeit Bank Logo",
+          "description": "Visual logo impersonation detected.",
+          "severity": "high",
+          "category": "visual_spoofing"
+        }
+      ],
+      "tactics": [
+        "Visual Identity Impersonation"
+      ],
+      "recommendations": [
+        "Do not call the phone number in image."
+      ],
+      "engine_type": "gemini",
+      "created_at": "2026-10-14T13:56:10.584Z"
+    },
+    {
+      "id": "scan_1791986203109_9eaa1f7e",
+      "user_id": "test_integration_user",
+      "input_type": "sms",
+      "detected_language": "ru",
+      "content_snippet": "URGENT: Your bank account will be blocked today unless you click http://suspicious-bank-login.xyz",
+      "content_hash": "7fdfbd07ca76eec8e3e1661d42141f59bef2656602cf1ac392117931ae959843",
+      "risk_score": 51,
+      "risk_level": "elevated",
+      "indicators": [
+        {
+          "id": "rule_account_threat",
+          "title": "Manufactured Urgency & Account Suspension Threat",
+          "description": "Pressures the recipient with imminent account termination, legal repercussions, or service disruption to force immediate compliance without critical reflection.",
+          "severity": "high",
+          "category": "Psychological Coercion",
+          "evidence": "account will be blocked today",
+          "weight": 35
+        }
+      ],
+      "tactics": [
+        "Psychological Coercion",
+        "Suspicious URL Engineering"
+      ],
+      "recommendations": [
+        "Exercise caution. Independently verify the message through the official service app or website.",
+        "Do not use phone numbers or web addresses provided inside this unsolicited message.",
+        "URL Alert: Unencrypted HTTP protocol used; legitimate sensitive services require HTTPS.",
+        "URL Alert: Domain uses high-abuse top-level domain (.xyz) frequently leveraged for disposable phishing sites."
+      ],
+      "engine_type": "heuristics",
+      "created_at": "2026-10-14T13:56:43.110Z"
+    },
+    {
+      "id": "scan_1791986203113_a5b37664",
+      "user_id": "usr_demo_101",
+      "input_type": "sms",
+      "detected_language": "en",
+      "content_snippet": "Suspicious alert for testing",
+      "content_hash": "hash_test_demo_101",
       "risk_score": 85,
       "risk_level": "critical",
       "indicators": [
         {
-          "id": "rule_bisp_ehsaas_fraud",
-          "title": "Government Relief Fund Impersonation (BISP / Ehsaas)",
-          "description": "Falsely claims approval or pending disbursement for Benazir Income Support Program (BISP) or Ehsaas emergency cash via unauthorized phone numbers.",
+          "ruleId": "urgency",
+          "name": "Urgency",
           "severity": "critical",
-          "category": "Authority Impersonation",
-          "evidence": "Benazir Income",
-          "weight": 45
-        },
-        {
-          "id": "rule_fake_lottery",
-          "title": "Unsolicited Prize or Lottery Notification",
-          "description": "Claims the recipient has won an unentered lottery, luxury vehicle, gold, or large cash reward (e.g., Jeeto Pakistan, Lucky Draw).",
-          "severity": "critical",
-          "category": "Advance Fee Fraud",
-          "evidence": "inaam nikla",
-          "weight": 40
+          "confidence": 0.9,
+          "rationale": "Urgent"
         }
       ],
       "tactics": [
-        "Authority Impersonation",
-        "Advance Fee Fraud"
+        "Urgency coercion"
       ],
       "recommendations": [
-        "Do NOT click any links, open attachments, or reply to the message.",
-        "Never share OTP codes, banking passwords, PINs, or CNIC details.",
-        "If this claimed to be your bank or mobile wallet, call their official verified helpline directly.",
-        "Block the sender phone number / email address and report as fraud to your telecom operator."
+        "Do not click"
       ],
       "engine_type": "heuristics",
-      "created_at": "2026-10-13T09:58:19.526Z"
+      "created_at": "2026-10-14T13:56:43.113Z"
     },
     {
-      "id": "scan_1791885774184_b324b69c",
-      "user_id": "usr_demo_101",
-      "input_type": "url",
-      "detected_language": "en",
-      "content_snippet": "https://app.netlify.com/projects/ciroquick/configuration/developer-settings",
-      "content_hash": "51cc7bc0895450fed3db1ec351d0cad10a8fe04ea6f360269e4c68fbacb33d58",
-      "risk_score": 0,
-      "risk_level": "low",
-      "indicators": [],
-      "tactics": [],
-      "recommendations": [
-        "No obvious red flags detected, but maintain general vigilance.",
-        "Remember that legitimate organizations never ask for your confidential credentials via message."
-      ],
-      "url_details": {
-        "rawUrl": "https://app.netlify.com/projects/ciroquick/configuration/developer-settings",
-        "hostname": "app.netlify.com",
-        "protocol": "https:",
-        "isIpAddress": false,
-        "hasDeceptiveTokens": false,
-        "warnings": []
-      },
-      "engine_type": "heuristics",
-      "created_at": "2026-10-13T10:02:54.184Z"
-    },
-    {
-      "id": "scan_1791886736904_3a1c7fd1",
-      "user_id": "test_integration_user",
-      "input_type": "sms",
-      "detected_language": "ru",
-      "content_snippet": "URGENT: Your bank account will be blocked today unless you click http://suspicious-bank-login.xyz",
-      "content_hash": "7fdfbd07ca76eec8e3e1661d42141f59bef2656602cf1ac392117931ae959843",
-      "risk_score": 51,
-      "risk_level": "elevated",
-      "indicators": [
-        {
-          "id": "rule_account_threat",
-          "title": "Manufactured Urgency & Account Suspension Threat",
-          "description": "Pressures the recipient with imminent account termination, legal repercussions, or service disruption to force immediate compliance without critical reflection.",
-          "severity": "high",
-          "category": "Psychological Coercion",
-          "evidence": "account will be blocked today",
-          "weight": 35
-        }
-      ],
-      "tactics": [
-        "Psychological Coercion",
-        "Suspicious URL Engineering"
-      ],
-      "recommendations": [
-        "Exercise caution. Independently verify the message through the official service app or website.",
-        "Do not use phone numbers or web addresses provided inside this unsolicited message.",
-        "URL Alert: Unencrypted HTTP protocol used; legitimate sensitive services require HTTPS.",
-        "URL Alert: Domain uses high-abuse top-level domain (.xyz) frequently leveraged for disposable phishing sites."
-      ],
-      "engine_type": "heuristics",
-      "created_at": "2026-10-13T10:18:56.904Z"
-    },
-    {
-      "id": "scan_1791886753818_1ba30e0f",
-      "user_id": "test_integration_user",
-      "input_type": "sms",
-      "detected_language": "ru",
-      "content_snippet": "URGENT: Your bank account will be blocked today unless you click http://suspicious-bank-login.xyz",
-      "content_hash": "7fdfbd07ca76eec8e3e1661d42141f59bef2656602cf1ac392117931ae959843",
-      "risk_score": 51,
-      "risk_level": "elevated",
-      "indicators": [
-        {
-          "id": "rule_account_threat",
-          "title": "Manufactured Urgency & Account Suspension Threat",
-          "description": "Pressures the recipient with imminent account termination, legal repercussions, or service disruption to force immediate compliance without critical reflection.",
-          "severity": "high",
-          "category": "Psychological Coercion",
-          "evidence": "account will be blocked today",
-          "weight": 35
-        }
-      ],
-      "tactics": [
-        "Psychological Coercion",
-        "Suspicious URL Engineering"
-      ],
-      "recommendations": [
-        "Exercise caution. Independently verify the message through the official service app or website.",
-        "Do not use phone numbers or web addresses provided inside this unsolicited message.",
-        "URL Alert: Unencrypted HTTP protocol used; legitimate sensitive services require HTTPS.",
-        "URL Alert: Domain uses high-abuse top-level domain (.xyz) frequently leveraged for disposable phishing sites."
-      ],
-      "engine_type": "heuristics",
-      "created_at": "2026-10-13T10:19:13.818Z"
-    },
-    {
-      "id": "scan_1791886754054_db6507a9",
+      "id": "scan_1791986203324_c20affeb",
       "user_id": "test_screenshot_user",
       "input_type": "screenshot",
       "detected_language": "en",
@@ -441,202 +399,10 @@
         "Do not call the phone number in image."
       ],
       "engine_type": "gemini",
-      "created_at": "2026-10-13T10:19:14.054Z"
-    },
-    {
-      "id": "img_3e861c7e6a30b49c",
-      "user_id": null,
-      "input_type": "screenshot",
-      "detected_language": "en",
-      "content_snippet": "Urgent mobile wallet / banking notification captured in screenshot.",
-      "content_hash": "ad5018eb318c6fbce118048449aec71154a1cb75a5ae3184d176e53ca09f2bf0",
-      "risk_score": 88,
-      "risk_level": "critical",
-      "indicators": [
-        {
-          "id": "fake_notice_01",
-          "title": "Suspicious Urgent Account Alert Pattern",
-          "description": "Screenshot contains high-urgency language demanding instant action or contact.",
-          "severity": "high",
-          "category": "visual_spoofing",
-          "evidence": "Urgent notice in screenshot"
-        },
-        {
-          "id": "fake_notice_02",
-          "title": "Unofficial Verification Channel",
-          "description": "Message directs recipient to unofficial numbers or links.",
-          "severity": "critical",
-          "category": "social_engineering",
-          "evidence": "Direct call/link prompt"
-        }
-      ],
-      "tactics": [
-        "Urgency Pressure",
-        "Visual Brand Lure"
-      ],
-      "recommendations": [
-        "Do not reply or click any links shown in the screenshot.",
-        "Verify your account by opening your official bank app directly.",
-        "Report the sender number to FIA Cyber Crime Wing helpline 1991."
-      ],
-      "explanation": "Analysis detected high-risk smishing indicators commonly used in mobile screenshot scams, including pressure urgency and unverified contact prompts.",
-      "engine_type": "gemini",
-      "created_at": "2026-10-13T10:20:03.542Z"
-    },
-    {
-      "id": "scan_1791886810467_026a2549",
-      "user_id": "test_integration_user",
-      "input_type": "sms",
-      "detected_language": "ru",
-      "content_snippet": "URGENT: Your bank account will be blocked today unless you click http://suspicious-bank-login.xyz",
-      "content_hash": "7fdfbd07ca76eec8e3e1661d42141f59bef2656602cf1ac392117931ae959843",
-      "risk_score": 51,
-      "risk_level": "elevated",
-      "indicators": [
-        {
-          "id": "rule_account_threat",
-          "title": "Manufactured Urgency & Account Suspension Threat",
-          "description": "Pressures the recipient with imminent account termination, legal repercussions, or service disruption to force immediate compliance without critical reflection.",
-          "severity": "high",
-          "category": "Psychological Coercion",
-          "evidence": "account will be blocked today",
-          "weight": 35
-        }
-      ],
-      "tactics": [
-        "Psychological Coercion",
-        "Suspicious URL Engineering"
-      ],
-      "recommendations": [
-        "Exercise caution. Independently verify the message through the official service app or website.",
-        "Do not use phone numbers or web addresses provided inside this unsolicited message.",
-        "URL Alert: Unencrypted HTTP protocol used; legitimate sensitive services require HTTPS.",
-        "URL Alert: Domain uses high-abuse top-level domain (.xyz) frequently leveraged for disposable phishing sites."
-      ],
-      "engine_type": "heuristics",
-      "created_at": "2026-10-13T10:20:10.467Z"
-    },
-    {
-      "id": "scan_1791886810826_4f18af4e",
-      "user_id": "test_screenshot_user",
-      "input_type": "screenshot",
-      "detected_language": "en",
-      "content_snippet": "Detected fake bank alert in screenshot",
-      "content_hash": "hash_screenshot_123",
-      "risk_score": 95,
-      "risk_level": "critical",
-      "indicators": [
-        {
-          "id": "fake_logo_01",
-          "title": "Counterfeit Bank Logo",
-          "description": "Visual logo impersonation detected.",
-          "severity": "high",
-          "category": "visual_spoofing"
-        }
-      ],
-      "tactics": [
-        "Visual Identity Impersonation"
-      ],
-      "recommendations": [
-        "Do not call the phone number in image."
-      ],
-      "engine_type": "gemini",
-      "created_at": "2026-10-13T10:20:10.828Z"
-    },
-    {
-      "id": "scan_1791886905769_0d19d660",
-      "user_id": "test_integration_user",
-      "input_type": "sms",
-      "detected_language": "ru",
-      "content_snippet": "URGENT: Your bank account will be blocked today unless you click http://suspicious-bank-login.xyz",
-      "content_hash": "7fdfbd07ca76eec8e3e1661d42141f59bef2656602cf1ac392117931ae959843",
-      "risk_score": 51,
-      "risk_level": "elevated",
-      "indicators": [
-        {
-          "id": "rule_account_threat",
-          "title": "Manufactured Urgency & Account Suspension Threat",
-          "description": "Pressures the recipient with imminent account termination, legal repercussions, or service disruption to force immediate compliance without critical reflection.",
-          "severity": "high",
-          "category": "Psychological Coercion",
-          "evidence": "account will be blocked today",
-          "weight": 35
-        }
-      ],
-      "tactics": [
-        "Psychological Coercion",
-        "Suspicious URL Engineering"
-      ],
-      "recommendations": [
-        "Exercise caution. Independently verify the message through the official service app or website.",
-        "Do not use phone numbers or web addresses provided inside this unsolicited message.",
-        "URL Alert: Unencrypted HTTP protocol used; legitimate sensitive services require HTTPS.",
-        "URL Alert: Domain uses high-abuse top-level domain (.xyz) frequently leveraged for disposable phishing sites."
-      ],
-      "engine_type": "heuristics",
-      "created_at": "2026-10-13T10:21:45.769Z"
-    },
-    {
-      "id": "scan_1791886906047_546d563a",
-      "user_id": "test_screenshot_user",
-      "input_type": "screenshot",
-      "detected_language": "en",
-      "content_snippet": "Detected fake bank alert in screenshot",
-      "content_hash": "hash_screenshot_123",
-      "risk_score": 95,
-      "risk_level": "critical",
-      "indicators": [
-        {
-          "id": "fake_logo_01",
-          "title": "Counterfeit Bank Logo",
-          "description": "Visual logo impersonation detected.",
-          "severity": "high",
-          "category": "visual_spoofing"
-        }
-      ],
-      "tactics": [
-        "Visual Identity Impersonation"
-      ],
-      "recommendations": [
-        "Do not call the phone number in image."
-      ],
-      "engine_type": "gemini",
-      "created_at": "2026-10-13T10:21:46.047Z"
+      "created_at": "2026-10-14T13:56:43.324Z"
     }
   ],
   "feedback": [],
-  "settings": [
-    {
-      "user_id": "usr_demo_101",
-      "retention_days": 90,
-      "auto_delete_low_risk": false,
-      "preferred_language": "en",
-      "cookie_analytics_consent": false,
-      "updated_at": "2026-10-13T10:03:17.126Z"
-    }
-  ],
-  "auditLogs": [
-    {
-      "id": "aud_b5bb96e4-a6de-45aa-888c-db55da844823",
-      "event_type": "USER_LOGIN_SUCCESS",
-      "user_id": "usr_demo_101",
-      "ip_hash": "12ca17b49af22894",
-      "details": {},
-      "created_at": "2026-10-13T10:02:20.027Z"
-    },
-    {
-      "id": "aud_274981d7-916c-4535-94f6-2a07cdf841bb",
-      "event_type": "ANALYSIS_PERFORMED",
-      "user_id": "usr_demo_101",
-      "ip_hash": "12ca17b49af22894",
-      "details": {
-        "analysisId": "scan_1791885774184_b324b69c",
-        "riskScore": 0,
-        "riskLevel": "low",
-        "inputType": "url",
-        "engineType": "heuristics"
-      },
-      "created_at": "2026-10-13T10:02:54.185Z"
-    }
-  ]
+  "settings": [],
+  "auditLogs": []
 }

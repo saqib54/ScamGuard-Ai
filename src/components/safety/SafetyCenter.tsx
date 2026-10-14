@@ -79,48 +79,48 @@ export const SafetyCenter: React.FC = () => {
     <div className="space-y-6">
       {/* Title */}
       <div>
-        <h2 className="text-lg sm:text-xl font-bold tracking-tight text-slate-900">
+        <h2 className="text-lg sm:text-xl font-black tracking-tight text-slate-900 dark:text-slate-100">
           {t('safetyTitle')}
         </h2>
-        <p className="text-xs sm:text-sm text-slate-500 mt-0.5">
+        <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-0.5">
           {t('safetySubtitle')}
         </p>
       </div>
 
       {/* Verified Emergency Contacts Directory in Clay Card */}
-      <div className="clay-card p-6 sm:p-7 space-y-5">
+      <div className="clay-card p-4 sm:p-7 space-y-4 sm:space-y-5">
         <div className="flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded-xl bg-emerald-50 text-emerald-800 flex items-center justify-center shadow-xs">
+          <div className="w-8 h-8 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-300 flex items-center justify-center shadow-xs">
             <PhoneCall className="w-4 h-4" />
           </div>
-          <h3 className="text-sm font-extrabold text-slate-900">
+          <h3 className="text-sm font-extrabold text-slate-900 dark:text-slate-100">
             {t('emergencyContactsTitle')}
           </h3>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-3.5">
           {emergencyContacts.map((c, i) => (
             <div
               key={i}
-              className="p-4 bg-slate-50/70 border border-slate-200/60 rounded-2xl space-y-1.5 shadow-2xs hover:bg-white transition-colors"
+              className="p-3.5 sm:p-4 bg-slate-50/70 dark:bg-slate-800/60 border border-slate-200/60 dark:border-slate-800 rounded-2xl space-y-1.5 shadow-2xs hover:bg-white dark:hover:bg-slate-800 transition-colors"
             >
               <div className="flex items-center justify-between gap-2">
-                <span className="text-xs font-bold text-slate-900">{c.name}</span>
+                <span className="text-xs font-bold text-slate-900 dark:text-slate-100">{c.name}</span>
                 {c.url && (
                   <a
                     href={c.url}
                     target="_blank"
                     rel="noreferrer"
-                    className="text-slate-400 hover:text-emerald-800 transition-colors"
+                    className="text-slate-400 hover:text-emerald-800 dark:hover:text-emerald-400 transition-colors"
                   >
                     <ExternalLink className="w-3.5 h-3.5" />
                   </a>
                 )}
               </div>
-              <div className="text-xs font-mono font-extrabold text-emerald-900">
+              <div className="text-xs font-mono font-extrabold text-emerald-900 dark:text-emerald-400">
                 {c.number}
               </div>
-              <p className="text-[11px] text-slate-500 leading-relaxed font-medium">
+              <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed font-medium">
                 {c.desc}
               </p>
             </div>
@@ -129,14 +129,14 @@ export const SafetyCenter: React.FC = () => {
       </div>
 
       {/* In-Depth Defense Protocols in Clay Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5">
         {safetyGuides.map(g => (
           <div
             key={g.id}
-            className="p-6 clay-card space-y-3.5 flex flex-col justify-between"
+            className="p-4 sm:p-6 clay-card space-y-3.5 flex flex-col justify-between"
           >
             <div>
-              <div className="w-10 h-10 rounded-2xl bg-emerald-50 text-emerald-800 flex items-center justify-center mb-3 shadow-xs border border-white">
+              <div className="w-10 h-10 rounded-2xl bg-emerald-50 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-300 flex items-center justify-center mb-3 shadow-xs border border-white dark:border-slate-800">
                 <ShieldCheck className="w-5 h-5" />
               </div>
               <h3 className="text-xs font-extrabold text-slate-900 mb-1.5">

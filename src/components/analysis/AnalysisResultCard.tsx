@@ -9,6 +9,7 @@ import { useAuth } from '../../context/AuthContext.tsx';
 import { useToast } from '../ui/Toast.tsx';
 import { AnalysisResult, RiskLevel } from '../../types/index.ts';
 import { ClaySticker, ClayStamp, STICKER_IMAGES } from '../ui/ClaySticker.tsx';
+import { UrlReputationCard } from './UrlReputationCard.tsx';
 
 interface AnalysisResultCardProps {
   analysis: AnalysisResult;
@@ -208,27 +209,27 @@ ${analysis.recommendations.map(r => `• ${r}`).join('\n')}
   };
 
   return (
-    <div className="clay-card p-6 sm:p-8 space-y-7">
+    <div className="clay-card p-4 sm:p-8 space-y-5 sm:space-y-7">
       {/* Top Banner / Assessment Summary */}
-      <div className={`p-5 sm:p-6 ${theme.bannerClass} flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5`}>
-        <div className="flex items-start gap-4">
-          <div className="p-3 rounded-2xl bg-white shadow-xs shrink-0 border border-white">
-            <RiskIcon className={`w-7 h-7 ${theme.scoreColor}`} />
+      <div className={`p-4 sm:p-6 ${theme.bannerClass} flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-5`}>
+        <div className="flex items-start gap-3 sm:gap-4">
+          <div className="p-2.5 sm:p-3 rounded-2xl bg-white dark:bg-slate-800 shadow-xs shrink-0 border border-white dark:border-slate-700">
+            <RiskIcon className={`w-6 h-6 sm:w-7 sm:h-7 ${theme.scoreColor}`} />
           </div>
           <div>
-            <div className="flex items-center gap-2 flex-wrap">
-              <span className={`px-3 py-1 rounded-xl text-xs font-bold ${theme.badgeBg}`}>
+            <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
+              <span className={`px-2.5 sm:px-3 py-1 rounded-xl text-xs font-bold ${theme.badgeBg}`}>
                 {theme.label}
               </span>
-              <span className="text-xs text-slate-500 font-mono">
+              <span className="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 font-mono">
                 ID: {analysis.id}
               </span>
               <span className="text-xs text-slate-400">·</span>
-              <span className="text-xs text-slate-600 font-semibold capitalize">
+              <span className="text-[11px] sm:text-xs text-slate-600 dark:text-slate-300 font-semibold capitalize">
                 {analysis.engineType === 'hybrid' ? t('hybridEngine') : t('heuristicEngine')}
               </span>
             </div>
-            <p className="text-xs sm:text-sm text-slate-800 mt-2 leading-relaxed font-semibold">
+            <p className="text-xs sm:text-sm text-slate-800 dark:text-slate-200 mt-2 leading-relaxed font-semibold">
               {analysis.explanation}
             </p>
           </div>
@@ -236,15 +237,15 @@ ${analysis.recommendations.map(r => `• ${r}`).join('\n')}
 
         {/* Numeric Score Gauge & Tactile Clay Sticker */}
         <div className="flex items-center gap-4 shrink-0 w-full sm:w-auto justify-between sm:justify-end">
-          <div className="sm:text-right bg-white/90 p-4 rounded-2xl border border-white/80 shadow-xs flex-1 sm:flex-initial">
-            <span className="text-[10px] uppercase tracking-wider text-slate-500 block font-bold">
+          <div className="sm:text-right bg-white/90 dark:bg-slate-900/90 p-3.5 sm:p-4 rounded-2xl border border-white/80 dark:border-slate-800 shadow-xs flex-1 sm:flex-initial">
+            <span className="text-[10px] uppercase tracking-wider text-slate-500 dark:text-slate-400 block font-bold">
               {t('riskScoreLabel')}
             </span>
             <div className="flex items-baseline sm:justify-end gap-1">
-              <span className={`text-4xl sm:text-5xl font-black font-mono tabular-nums ${theme.scoreColor}`}>
+              <span className={`text-3xl sm:text-5xl font-black font-mono tabular-nums ${theme.scoreColor}`}>
                 {analysis.riskScore}
               </span>
-              <span className="text-xs font-mono text-slate-400 font-bold">/ 100</span>
+              <span className="text-xs font-mono text-slate-400 dark:text-slate-500 font-bold">/ 100</span>
             </div>
             <div className="mt-1">
               <ClayStamp
@@ -292,7 +293,7 @@ ${analysis.recommendations.map(r => `• ${r}`).join('\n')}
       </div>
 
       {/* Uncertainty & Limitations Notice */}
-      <div className="flex items-start gap-2.5 p-3.5 bg-slate-50 border border-slate-200/60 rounded-xl text-xs text-slate-600 shadow-2xs">
+      <div className="flex items-start gap-2.5 p-3.5 bg-slate-50 dark:bg-slate-850/70 border border-slate-200/60 dark:border-slate-800 rounded-xl text-xs text-slate-600 dark:text-slate-300 shadow-2xs">
         <HelpCircle className="w-4 h-4 shrink-0 text-slate-400 mt-0.5" />
         <p className="leading-relaxed font-medium">
           {t('uncertaintyNotice')}
@@ -301,53 +302,53 @@ ${analysis.recommendations.map(r => `• ${r}`).join('\n')}
 
       {/* Submitted Content Snippet */}
       <div>
-        <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">
+        <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">
           Inspected Message Content
         </h4>
-        <div className="p-4 clay-inset text-xs font-mono text-slate-800 break-words max-h-36 overflow-y-auto">
+        <div className="p-3.5 sm:p-4 clay-inset text-xs font-mono text-slate-800 dark:text-slate-200 break-words max-h-36 overflow-y-auto">
           {analysis.contentSnippet}
         </div>
       </div>
 
       {/* Detected Warning Indicators */}
       <div>
-        <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-3">
+        <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-3">
           {t('detectedIndicators')} ({analysis.indicators.length})
         </h4>
 
         {analysis.indicators.length === 0 ? (
-          <div className="p-4 clay-banner-low text-xs text-emerald-950 flex items-center gap-2.5 font-medium">
-            <ShieldCheck className="w-5 h-5 text-emerald-700 shrink-0" />
+          <div className="p-4 clay-banner-low text-xs text-emerald-950 dark:text-emerald-200 flex items-center gap-2.5 font-medium">
+            <ShieldCheck className="w-5 h-5 text-emerald-700 dark:text-emerald-400 shrink-0" />
             <span>{t('noIndicatorsDetected')}</span>
           </div>
         ) : (
           <div className="space-y-3">
             {analysis.indicators.map((ind, idx) => {
-              let sevClass = 'bg-slate-100 text-slate-700';
-              if (ind.severity === 'critical') sevClass = 'bg-rose-100 text-rose-800 border border-rose-200';
-              else if (ind.severity === 'high') sevClass = 'bg-rose-50 text-rose-700 border border-rose-100';
-              else if (ind.severity === 'medium') sevClass = 'bg-amber-50 text-amber-800 border border-amber-100';
+              let sevClass = 'bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300';
+              if (ind.severity === 'critical') sevClass = 'bg-rose-100 text-rose-800 border border-rose-200 dark:bg-rose-950/60 dark:text-rose-300 dark:border-rose-900';
+              else if (ind.severity === 'high') sevClass = 'bg-rose-50 text-rose-700 border border-rose-100 dark:bg-rose-950/40 dark:text-rose-300 dark:border-rose-900';
+              else if (ind.severity === 'medium') sevClass = 'bg-amber-50 text-amber-800 border border-amber-100 dark:bg-amber-950/40 dark:text-amber-300 dark:border-amber-900';
 
               return (
                 <div
                   key={ind.id || idx}
-                  className="p-4 bg-white/95 rounded-2xl border border-neutral-200/80 shadow-xs space-y-2"
+                  className="p-3.5 sm:p-4 bg-white/95 dark:bg-[#111a2e] rounded-2xl border border-neutral-200/80 dark:border-slate-800 shadow-xs space-y-2"
                 >
                   <div className="flex items-center justify-between gap-2 flex-wrap">
-                    <span className="text-xs font-bold text-slate-900">
+                    <span className="text-xs font-bold text-slate-900 dark:text-slate-100">
                       {ind.title}
                     </span>
                     <span className={`text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase ${sevClass}`}>
                       {ind.severity}
                     </span>
                   </div>
-                  <p className="text-xs text-slate-600 leading-relaxed">
+                  <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
                     {ind.description}
                   </p>
                   {ind.evidence && (
-                    <div className="text-[11px] text-slate-500 flex items-baseline gap-1.5 pt-1">
-                      <span className="font-bold text-slate-700 shrink-0">Flagged Evidence:</span>
-                      <code className="bg-amber-50 text-amber-900 px-2 py-0.5 rounded-md border border-amber-200 font-mono text-[11px]">
+                    <div className="text-[11px] text-slate-500 dark:text-slate-400 flex items-baseline gap-1.5 pt-1 flex-wrap">
+                      <span className="font-bold text-slate-700 dark:text-slate-300 shrink-0">Flagged Evidence:</span>
+                      <code className="bg-amber-50 dark:bg-amber-950/40 text-amber-900 dark:text-amber-300 px-2 py-0.5 rounded-md border border-amber-200 dark:border-amber-900 font-mono text-[11px] break-all">
                         "{ind.evidence}"
                       </code>
                     </div>
@@ -361,32 +362,44 @@ ${analysis.recommendations.map(r => `• ${r}`).join('\n')}
 
       {/* Structural URL Inspection Details (if available) */}
       {analysis.urlDetails && (
-        <div className="p-4 bg-slate-50 border border-slate-200 rounded-2xl space-y-2.5">
-          <h4 className="text-xs font-bold text-slate-800 flex items-center gap-1.5">
-            <ExternalLink className="w-3.5 h-3.5 text-slate-600" />
+        <div className="p-4 bg-slate-50 dark:bg-slate-850/70 border border-slate-200/80 dark:border-slate-800 rounded-2xl space-y-2.5">
+          <h4 className="text-xs font-bold text-slate-800 dark:text-slate-200 flex items-center gap-1.5">
+            <ExternalLink className="w-3.5 h-3.5 text-slate-600 dark:text-slate-400" />
             <span>{t('urlAnalysis')}</span>
           </h4>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-600">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-600 dark:text-slate-300">
             <div>
-              <span className="font-medium text-slate-500">Hostname: </span>
-              <span className="font-mono text-slate-900 font-bold">{analysis.urlDetails.hostname}</span>
+              <span className="font-medium text-slate-500 dark:text-slate-400">Hostname: </span>
+              <span className="font-mono text-slate-900 dark:text-slate-100 font-bold">{analysis.urlDetails.hostname}</span>
             </div>
             <div>
-              <span className="font-medium text-slate-500">Protocol: </span>
-              <span className="font-mono text-slate-900 font-bold">{analysis.urlDetails.protocol}</span>
+              <span className="font-medium text-slate-500 dark:text-slate-400">Protocol: </span>
+              <span className="font-mono text-slate-900 dark:text-slate-100 font-bold">{analysis.urlDetails.protocol}</span>
             </div>
           </div>
           {analysis.urlDetails.warnings && analysis.urlDetails.warnings.length > 0 && (
             <div className="space-y-1 pt-1">
               {analysis.urlDetails.warnings.map((w, i) => (
-                <div key={i} className="text-xs text-amber-900 flex items-start gap-1.5 font-medium">
-                  <AlertTriangle className="w-3.5 h-3.5 text-amber-600 shrink-0 mt-0.5" />
+                <div key={i} className="text-xs text-amber-900 dark:text-amber-300 flex items-start gap-1.5 font-medium">
+                  <AlertTriangle className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
                   <span>{w}</span>
                 </div>
               ))}
             </div>
           )}
         </div>
+      )}
+
+      {/* Real-Time Public Blacklist & Threat Reputation Verification Card */}
+      {(analysis.urlReputation || analysis.urlDetails || analysis.inputType === 'url') && (
+        <UrlReputationCard
+          initialReputation={analysis.urlReputation}
+          targetUrl={
+            analysis.urlReputation?.queriedUrl ||
+            analysis.urlDetails?.rawUrl ||
+            (analysis.inputType === 'url' ? analysis.contentSnippet.trim() : (analysis.urlDetails?.hostname || ''))
+          }
+        />
       )}
 
       {/* Recommended Safe Actions */}
@@ -555,25 +568,25 @@ ${analysis.recommendations.map(r => `• ${r}`).join('\n')}
       </div>
 
       {/* Actions Toolbar */}
-      <div className="flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-neutral-100">
-        <div className="flex items-center gap-2">
+      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 pt-4 border-t border-neutral-100 dark:border-slate-800">
+        <div className="grid grid-cols-3 sm:flex items-center gap-2">
           <button
             onClick={handleCopy}
-            className="clay-button-secondary flex items-center gap-1.5 px-3.5 py-2 text-xs font-bold text-slate-700"
+            className="clay-button-secondary flex items-center justify-center gap-1.5 px-3 py-2 text-xs font-bold text-slate-700 dark:text-slate-200"
           >
-            {copied ? <Check className="w-3.5 h-3.5 text-emerald-700" /> : <Copy className="w-3.5 h-3.5" />}
+            {copied ? <Check className="w-3.5 h-3.5 text-emerald-700 dark:text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
             <span>{copied ? 'Copied' : t('btnCopyReport')}</span>
           </button>
           <button
             onClick={handleExportJson}
-            className="clay-button-secondary flex items-center gap-1.5 px-3.5 py-2 text-xs font-bold text-slate-700"
+            className="clay-button-secondary flex items-center justify-center gap-1.5 px-3 py-2 text-xs font-bold text-slate-700 dark:text-slate-200"
           >
             <Download className="w-3.5 h-3.5" />
             <span>{t('btnExportJson')}</span>
           </button>
           <button
             onClick={() => setShowFeedbackModal(true)}
-            className="px-3 py-2 text-xs font-bold text-slate-500 hover:text-slate-800 rounded-xl transition-colors"
+            className="px-3 py-2 text-xs font-bold text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-white rounded-xl transition-colors text-center"
           >
             <Flag className="w-3.5 h-3.5 inline mr-1" />
             <span>{t('btnReportIssue')}</span>
@@ -582,7 +595,7 @@ ${analysis.recommendations.map(r => `• ${r}`).join('\n')}
 
         <button
           onClick={onNewScan}
-          className="clay-button-primary flex items-center gap-1.5 px-5 py-2.5 text-xs font-bold"
+          className="clay-button-primary flex items-center justify-center gap-1.5 px-5 py-2.5 text-xs font-black"
         >
           <RotateCcw className="w-3.5 h-3.5" />
           <span>{t('btnNewScan')}</span>
@@ -591,20 +604,20 @@ ${analysis.recommendations.map(r => `• ${r}`).join('\n')}
 
       {/* Inaccuracy Reporting Modal */}
       {showFeedbackModal && (
-        <div className="fixed inset-0 z-50 bg-black/40 backdrop-blur-xs flex items-center justify-center p-4">
-          <div className="clay-card max-w-md w-full p-6 space-y-4 shadow-2xl">
+        <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4">
+          <div className="clay-card max-w-md w-full p-6 space-y-4 shadow-2xl bg-white dark:bg-[#111a2e] border border-slate-200 dark:border-slate-800">
             <div>
-              <h3 className="text-sm font-bold text-slate-900">
+              <h3 className="text-sm font-bold text-slate-900 dark:text-slate-100">
                 {t('btnReportIssue')}
               </h3>
-              <p className="text-xs text-slate-500 mt-1">
+              <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
                 Help refine ScamShield detection models by submitting corrections.
               </p>
             </div>
 
             <form onSubmit={handleSubmitFeedback} className="space-y-3">
               <div>
-                <label className="block text-xs font-semibold text-slate-700 mb-1">
+                <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
                   Your Assessment
                 </label>
                 <div className="grid grid-cols-3 gap-2">

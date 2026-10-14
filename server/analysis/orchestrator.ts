@@ -1,8 +1,9 @@
 import crypto from 'node:crypto';
 import { normalizeInput } from './normalizer.ts';
-import { inspectUrl, UrlInspectionResult } from './urlInspector.ts';
-import { runHeuristicAnalysis, DetectedIndicator } from './heuristicEngine.ts';
+import { inspectUrl, type UrlInspectionResult } from './urlInspector.ts';
+import { runHeuristicAnalysis, type DetectedIndicator } from './heuristicEngine.ts';
 import { analyzeWithGemini } from './aiEngine.ts';
+import { checkUrlReputation, type UrlReputationCheckResult } from './urlReputationService.ts';
 
 export interface FullAnalysisResult {
   id: string;
@@ -19,6 +20,7 @@ export interface FullAnalysisResult {
   recommendations: string[];
   explanation: string;
   urlDetails?: UrlInspectionResult;
+  urlReputation?: UrlReputationCheckResult;
   engineType: 'hybrid' | 'heuristics' | 'gemini';
   createdAt: string;
 }
@@ -36,16 +38,32 @@ export async function orchestrateAnalysis(params: {
     ? languageOverride
     : normalized.detectedLanguage;
 
-  // 2. Structural URL Inspection
+  // 2. Structural URL Inspection & Real-Time Public Blacklist Reputation Check
   let primaryUrlInspection: UrlInspectionResult | undefined;
+  let primaryUrlReputation: UrlReputationCheckResult | undefined;
   let urlSuspicionScore = 0;
   let urlWarnings: string[] = [];
 
   const targetUrls = inputType === 'url' ? [content.trim()] : normalized.extractedUrls;
   if (targetUrls.length > 0) {
-    primaryUrlInspection = inspectUrl(targetUrls[0]);
+    const rawTarget = targetUrls[0];
+    primaryUrlInspection = inspectUrl(rawTarget);
     urlSuspicionScore = primaryUrlInspection.suspicionScore;
-    urlWarnings = primaryUrlInspection.warnings;
+    urlWarnings = [...primaryUrlInspection.warnings];
+
+    // Real-Time Query against public blacklists (URLhaus, OpenPhish, Spamhaus DBL, ThreatFox, CryptoScamDB)
+    try {
+      primaryUrlReputation = await checkUrlReputation(rawTarget);
+      if (primaryUrlReputation.isBlacklisted) {
+        urlSuspicionScore = Math.max(urlSuspicionScore, 85);
+        urlWarnings.push(`Listed on public cybersecurity blacklists: ${primaryUrlReputation.summary}`);
+      } else if (primaryUrlReputation.overallVerdict === 'suspicious') {
+        urlSuspicionScore = Math.max(urlSuspicionScore, 50);
+        urlWarnings.push(primaryUrlReputation.summary);
+      }
+    } catch {
+      // Graceful fallback if network is constrained
+    }
   }
 
   // 3. Heuristic Rules Engine
@@ -128,6 +146,46 @@ export async function orchestrateAnalysis(params: {
     }
   }
 
+  // 6. Real-Time Public Blacklist Integration
+  if (primaryUrlReputation) {
+    if (primaryUrlReputation.isBlacklisted) {
+      finalScore = Math.max(finalScore, 92);
+      finalLevel = 'critical';
+      tactics.unshift('Public Cybersecurity Blacklist Match');
+      recommendations.unshift('DO NOT OPEN OR CLICK: This link is actively blacklisted on global threat feeds (URLhaus / OpenPhish / Spamhaus).');
+      
+      const listedSources = primaryUrlReputation.blacklists
+        .filter(b => b.status === 'listed')
+        .map(b => b.name)
+        .join(', ');
+
+      indicators.unshift({
+        id: 'ind_blacklist_flagged',
+        title: `Flagged on Public Blacklist (${listedSources})`,
+        description: primaryUrlReputation.summary,
+        severity: 'critical',
+        category: 'Public Blacklist Verification',
+        evidence: primaryUrlReputation.queriedUrl,
+        weight: 60
+      });
+    } else if (primaryUrlReputation.overallVerdict === 'suspicious') {
+      finalScore = Math.min(100, Math.max(finalScore, finalScore + 20));
+      if (finalScore >= 80) finalLevel = 'critical';
+      else if (finalScore >= 55) finalLevel = 'high';
+      else if (finalScore >= 25) finalLevel = 'elevated';
+
+      indicators.push({
+        id: 'ind_blacklist_caution',
+        title: 'Elevated Threat Signal on Public Blacklists',
+        description: primaryUrlReputation.summary,
+        severity: 'medium',
+        category: 'Public Blacklist Verification',
+        evidence: primaryUrlReputation.queriedUrl,
+        weight: 25
+      });
+    }
+  }
+
   // Generate Snippet and Hash for audit trail without storing massive payloads
   const snippet = normalized.cleanText.length > 200
     ? `${normalized.cleanText.substring(0, 197)}...`
@@ -155,6 +213,7 @@ export async function orchestrateAnalysis(params: {
     recommendations,
     explanation,
     urlDetails: primaryUrlInspection,
+    urlReputation: primaryUrlReputation,
     engineType,
     createdAt: new Date().toISOString()
   };

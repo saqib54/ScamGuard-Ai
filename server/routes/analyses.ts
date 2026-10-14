@@ -1,4 +1,4 @@
-import { Router, Request, Response } from 'express';
+import { Router, type Request, type Response } from 'express';
 import { db } from '../db/database.ts';
 import { orchestrateAnalysis } from '../analysis/orchestrator.ts';
 import { createRateLimiter } from '../middleware/security.ts';
@@ -65,6 +65,7 @@ analysesRouter.post('/', scanLimiter, async (req: Request, res: Response, next) 
         hasDeceptiveTokens: result.urlDetails.hasBrandSpoofing || result.urlDetails.hasDeceptiveSubdomains,
         warnings: result.urlDetails.warnings
       } : undefined,
+      url_reputation: result.urlReputation,
       engine_type: result.engineType
     });
 
@@ -96,6 +97,7 @@ analysesRouter.post('/', scanLimiter, async (req: Request, res: Response, next) 
         recommendations: saved.recommendations,
         explanation: result.explanation,
         urlDetails: saved.url_details,
+        urlReputation: result.urlReputation,
         engineType: saved.engine_type,
         createdAt: saved.created_at
       }
@@ -174,6 +176,7 @@ analysesRouter.get('/:id', (req: Request, res: Response) => {
       tactics: record.tactics,
       recommendations: record.recommendations,
       urlDetails: record.url_details,
+      urlReputation: record.url_reputation,
       engineType: record.engine_type,
       createdAt: record.created_at
     }

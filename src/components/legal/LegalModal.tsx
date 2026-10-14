@@ -13,15 +13,15 @@ export const LegalModal: React.FC<LegalModalProps> = ({ type, onClose }) => {
   if (!type) return null;
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-xs flex items-center justify-center p-4">
-      <div className="bg-white rounded-xl max-w-2xl w-full max-h-[85vh] flex flex-col shadow-2xl border border-neutral-200">
+    <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4">
+      <div className="clay-card bg-white dark:bg-[#111a2e] rounded-2xl max-w-2xl w-full max-h-[85vh] flex flex-col shadow-2xl border border-neutral-200 dark:border-slate-800">
         {/* Header */}
-        <div className="p-5 border-b border-neutral-200 flex items-center justify-between">
+        <div className="p-4 sm:p-5 border-b border-neutral-200 dark:border-slate-800 flex items-center justify-between">
           <div className="flex items-center gap-2.5">
-            {type === 'privacy' && <Lock className="w-4 h-4 text-emerald-800" />}
-            {type === 'terms' && <FileText className="w-4 h-4 text-emerald-800" />}
-            {type === 'cookies' && <Cookie className="w-4 h-4 text-emerald-800" />}
-            <h2 className="text-base font-bold text-slate-900">
+            {type === 'privacy' && <Lock className="w-4 h-4 text-emerald-800 dark:text-emerald-400" />}
+            {type === 'terms' && <FileText className="w-4 h-4 text-emerald-800 dark:text-emerald-400" />}
+            {type === 'cookies' && <Cookie className="w-4 h-4 text-emerald-800 dark:text-emerald-400" />}
+            <h2 className="text-base font-bold text-slate-900 dark:text-slate-100">
               {type === 'privacy' && t('legalPrivacyPolicy')}
               {type === 'terms' && t('legalTerms')}
               {type === 'cookies' && t('legalCookies')}
@@ -29,7 +29,7 @@ export const LegalModal: React.FC<LegalModalProps> = ({ type, onClose }) => {
           </div>
           <button
             onClick={onClose}
-            className="p-1 text-slate-400 hover:text-slate-700 rounded-md"
+            className="p-1 text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 rounded-md"
             aria-label="Close legal modal"
           >
             <X className="w-4 h-4" />
@@ -37,10 +37,10 @@ export const LegalModal: React.FC<LegalModalProps> = ({ type, onClose }) => {
         </div>
 
         {/* Content Body */}
-        <div className="p-6 overflow-y-auto space-y-4 text-xs text-slate-600 leading-relaxed">
+        <div className="p-5 sm:p-6 overflow-y-auto space-y-4 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
           {type === 'privacy' && (
             <>
-              <p className="font-semibold text-slate-900">Effective Date: October 2026</p>
+              <p className="font-semibold text-slate-900 dark:text-slate-100">Effective Date: October 2026</p>
               <h3 className="font-bold text-slate-900 text-sm">1. Information We Process</h3>
               <p>
                 ScamShield AI inspects user-submitted text and URLs strictly to evaluate security indicators, social engineering patterns, and threat indicators. Submitted contents are analyzed ephemerally in-memory. Only sanitized cryptographic hashes (SHA-256) and summarized threat categories are stored in your private history.

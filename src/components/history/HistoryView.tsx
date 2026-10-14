@@ -134,23 +134,23 @@ export const HistoryView: React.FC<HistoryViewProps> = ({ onSelectAnalysis, onSt
   };
 
   return (
-    <div className="clay-card p-6 sm:p-8 space-y-6">
+    <div className="clay-card p-4 sm:p-8 space-y-5 sm:space-y-6">
       {/* Top Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
         <div>
-          <h2 className="text-xl sm:text-2xl font-extrabold tracking-tight text-slate-900">
+          <h2 className="text-xl sm:text-2xl font-black tracking-tight text-slate-900 dark:text-slate-100">
             {t('historyTitle')}
           </h2>
-          <p className="text-xs sm:text-sm text-slate-500 mt-1 font-medium">
+          <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1 font-medium">
             {t('historySubtitle')}
           </p>
         </div>
 
-        <div className="flex items-center gap-2.5">
+        <div className="flex items-center gap-2">
           <button
             onClick={handleExportCsv}
             disabled={records.length === 0}
-            className="clay-button-secondary flex items-center gap-1.5 px-3.5 py-2 text-xs font-bold text-slate-700 disabled:opacity-40"
+            className="clay-button-secondary flex items-center gap-1.5 px-3 py-2 text-xs font-bold text-slate-700 dark:text-slate-200 disabled:opacity-40"
           >
             <Download className="w-3.5 h-3.5" />
             <span>{t('exportHistoryCsv')}</span>
@@ -158,7 +158,7 @@ export const HistoryView: React.FC<HistoryViewProps> = ({ onSelectAnalysis, onSt
           <button
             onClick={() => setShowClearConfirm(true)}
             disabled={total === 0}
-            className="clay-button-rose flex items-center gap-1.5 px-3.5 py-2 text-xs font-bold disabled:opacity-40"
+            className="clay-button-rose flex items-center gap-1.5 px-3 py-2 text-xs font-bold disabled:opacity-40"
           >
             <Trash2 className="w-3.5 h-3.5" />
             <span className="hidden sm:inline">{t('btnClearAllHistory')}</span>
@@ -167,14 +167,14 @@ export const HistoryView: React.FC<HistoryViewProps> = ({ onSelectAnalysis, onSt
       </div>
 
       {/* Filter and Search Bar with Clay Inset */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3 pt-1">
         <form onSubmit={handleSearchSubmit} className="sm:col-span-1 relative">
           <input
             type="text"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder={t('searchPlaceholder')}
-            className="w-full pl-9 pr-3 py-2 text-xs clay-inset text-slate-900 font-medium focus:outline-none"
+            className="w-full pl-9 pr-3 py-2 text-xs clay-inset text-slate-900 dark:text-slate-100 font-medium focus:outline-none"
           />
           <Search className="w-3.5 h-3.5 text-slate-400 absolute left-3 top-2.5" />
         </form>
@@ -183,7 +183,7 @@ export const HistoryView: React.FC<HistoryViewProps> = ({ onSelectAnalysis, onSt
           <select
             value={riskFilter}
             onChange={(e) => setRiskFilter(e.target.value)}
-            className="w-full py-2 px-3 text-xs bg-white border border-slate-200 rounded-xl text-slate-800 font-semibold focus:outline-none shadow-2xs"
+            className="w-full py-2 px-3 text-xs bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-slate-800 dark:text-slate-200 font-semibold focus:outline-none shadow-2xs"
           >
             <option value="all">{t('filterAllRisks')}</option>
             <option value="critical">Critical Threats</option>
@@ -197,7 +197,7 @@ export const HistoryView: React.FC<HistoryViewProps> = ({ onSelectAnalysis, onSt
           <select
             value={typeFilter}
             onChange={(e) => setTypeFilter(e.target.value)}
-            className="w-full py-2 px-3 text-xs bg-white border border-slate-200 rounded-xl text-slate-800 font-semibold focus:outline-none shadow-2xs"
+            className="w-full py-2 px-3 text-xs bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-slate-800 dark:text-slate-200 font-semibold focus:outline-none shadow-2xs"
           >
             <option value="all">{t('filterAllTypes')}</option>
             <option value="sms">SMS</option>
@@ -226,38 +226,38 @@ export const HistoryView: React.FC<HistoryViewProps> = ({ onSelectAnalysis, onSt
           </button>
         </div>
       ) : (
-        <div className="divide-y divide-neutral-100 border border-neutral-200 rounded-lg overflow-hidden">
+        <div className="divide-y divide-neutral-100 dark:divide-slate-800 border border-neutral-200 dark:border-slate-800 rounded-xl overflow-hidden">
           {records.map(record => (
             <div
               key={record.id}
               onClick={() => onSelectAnalysis(record.id)}
-              className="p-3.5 flex items-center justify-between gap-4 hover:bg-slate-50/80 cursor-pointer transition-colors"
+              className="p-3 sm:p-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 sm:gap-4 hover:bg-slate-50/80 dark:hover:bg-slate-800/50 cursor-pointer transition-colors"
             >
               <div className="min-w-0 space-y-1">
-                <div className="flex items-center gap-2">
-                  <span className="text-[10px] font-mono uppercase px-1.5 py-0.5 rounded bg-slate-100 text-slate-700 font-semibold">
+                <div className="flex items-center gap-2 flex-wrap">
+                  <span className="text-[10px] font-mono uppercase px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold">
                     {record.inputType}
                   </span>
                   <span className="text-xs text-slate-400 font-mono">
                     {new Date(record.createdAt).toLocaleDateString()}
                   </span>
                   <span className="text-xs text-slate-400">·</span>
-                  <span className="text-xs text-slate-500 capitalize">
+                  <span className="text-xs text-slate-500 dark:text-slate-400 capitalize">
                     {record.detectedLanguage}
                   </span>
                   {record.indicatorsCount > 0 && (
-                    <span className="text-[11px] text-amber-700 font-medium">
+                    <span className="text-[11px] text-amber-700 dark:text-amber-400 font-medium">
                       · {record.indicatorsCount} warnings
                     </span>
                   )}
                 </div>
 
-                <p className="text-xs text-slate-800 truncate font-mono max-w-xl">
+                <p className="text-xs text-slate-800 dark:text-slate-200 truncate font-mono max-w-xl">
                   {record.contentSnippet}
                 </p>
               </div>
 
-              <div className="flex items-center gap-3 shrink-0">
+              <div className="flex items-center justify-between sm:justify-end gap-3 shrink-0 pt-1 sm:pt-0 border-t border-slate-50 dark:border-slate-800/60 sm:border-0">
                 <ClayStamp
                   text={
                     record.riskLevel === 'critical' || record.riskLevel === 'high'
@@ -280,10 +280,10 @@ export const HistoryView: React.FC<HistoryViewProps> = ({ onSelectAnalysis, onSt
                 <span
                   className={`text-xs font-mono font-bold px-2 py-0.5 rounded ${
                     record.riskLevel === 'critical' || record.riskLevel === 'high'
-                      ? 'bg-rose-50 text-rose-700 border border-rose-200'
+                      ? 'bg-rose-50 dark:bg-rose-950/40 text-rose-700 dark:text-rose-400 border border-rose-200 dark:border-rose-900'
                       : record.riskLevel === 'elevated'
-                      ? 'bg-amber-50 text-amber-700 border border-amber-200'
-                      : 'bg-emerald-50 text-emerald-700 border border-emerald-200'
+                      ? 'bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-400 border border-amber-200 dark:border-amber-900'
+                      : 'bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-900'
                   }`}
                 >
                   {record.riskScore}/100
@@ -298,7 +298,7 @@ export const HistoryView: React.FC<HistoryViewProps> = ({ onSelectAnalysis, onSt
                   <Trash2 className="w-3.5 h-3.5" />
                 </button>
 
-                <ArrowRight className="w-3.5 h-3.5 text-slate-300" />
+                <ArrowRight className="w-3.5 h-3.5 text-slate-300 dark:text-slate-600" />
               </div>
             </div>
           ))}
@@ -307,7 +307,7 @@ export const HistoryView: React.FC<HistoryViewProps> = ({ onSelectAnalysis, onSt
 
       {/* Pagination Controls */}
       {totalPages > 1 && (
-        <div className="flex items-center justify-between pt-3 text-xs text-slate-500">
+        <div className="flex items-center justify-between pt-3 text-xs text-slate-500 dark:text-slate-400">
           <span>
             Showing page {page} of {totalPages} ({total} total analyses)
           </span>
@@ -315,7 +315,7 @@ export const HistoryView: React.FC<HistoryViewProps> = ({ onSelectAnalysis, onSt
             <button
               onClick={() => fetchRecords(page - 1)}
               disabled={page <= 1}
-              className="p-1 rounded border border-slate-200 hover:bg-slate-100 disabled:opacity-40"
+              className="p-1.5 rounded border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 disabled:opacity-40"
               aria-label="Previous page"
             >
               <ChevronLeft className="w-4 h-4" />
@@ -323,7 +323,7 @@ export const HistoryView: React.FC<HistoryViewProps> = ({ onSelectAnalysis, onSt
             <button
               onClick={() => fetchRecords(page + 1)}
               disabled={page >= totalPages}
-              className="p-1 rounded border border-slate-200 hover:bg-slate-100 disabled:opacity-40"
+              className="p-1.5 rounded border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 disabled:opacity-40"
               aria-label="Next page"
             >
               <ChevronRight className="w-4 h-4" />
@@ -334,21 +334,21 @@ export const HistoryView: React.FC<HistoryViewProps> = ({ onSelectAnalysis, onSt
 
       {/* Permanent Clear All Confirmation Dialog */}
       {showClearConfirm && (
-        <div className="fixed inset-0 z-50 bg-black/40 flex items-center justify-center p-4">
-          <div className="bg-white rounded-xl max-w-sm w-full p-5 space-y-4 shadow-xl border border-neutral-200">
-            <div className="flex items-center gap-2 text-rose-700">
+        <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4">
+          <div className="clay-card bg-white dark:bg-[#111a2e] rounded-2xl max-w-sm w-full p-5 space-y-4 shadow-xl border border-neutral-200 dark:border-slate-800">
+            <div className="flex items-center gap-2 text-rose-700 dark:text-rose-400">
               <AlertTriangle className="w-5 h-5 shrink-0" />
-              <h3 className="text-sm font-bold text-slate-900">
+              <h3 className="text-sm font-bold text-slate-900 dark:text-slate-100">
                 {t('confirmClearAllTitle')}
               </h3>
             </div>
-            <p className="text-xs text-slate-600 leading-relaxed">
+            <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
               {t('confirmClearAllText')}
             </p>
             <div className="flex items-center justify-end gap-2 pt-2">
               <button
                 onClick={() => setShowClearConfirm(false)}
-                className="px-3 py-1.5 text-xs text-slate-600 hover:bg-slate-100 rounded-md font-medium"
+                className="px-3 py-1.5 text-xs text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-md font-medium"
               >
                 {t('btnCancel')}
               </button>

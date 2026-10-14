@@ -60,6 +60,20 @@ describe('API & Business Logic Integration', () => {
   });
 
   it('aggregates dashboard telemetry accurately', () => {
+    db.saveAnalysis({
+      user_id: 'usr_demo_101',
+      input_type: 'sms',
+      detected_language: 'en',
+      content_snippet: 'Suspicious alert for testing',
+      content_hash: 'hash_test_demo_101',
+      risk_score: 85,
+      risk_level: 'critical',
+      indicators: [{ id: 'urgency_1', title: 'Urgency Coercion', description: 'Urgent demand detected', severity: 'critical', category: 'urgency' }],
+      tactics: ['Urgency coercion'],
+      recommendations: ['Do not click'],
+      engine_type: 'heuristics'
+    });
+
     const stats = db.getStats('usr_demo_101');
     expect(stats.total).toBeGreaterThan(0);
     expect(stats.riskDistribution).toHaveProperty('critical');

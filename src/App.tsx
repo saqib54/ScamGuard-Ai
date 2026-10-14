@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { ThemeProvider } from './context/ThemeContext.tsx';
 import { LanguageProvider, useLanguage } from './context/LanguageContext.tsx';
 import { AuthProvider, useAuth } from './context/AuthContext.tsx';
 import { ToastProvider, useToast } from './components/ui/Toast.tsx';
@@ -13,6 +14,7 @@ import { AiCopilotView } from './components/ai/AiCopilotView.tsx';
 import { HistoryView } from './components/history/HistoryView.tsx';
 import { SafetyCenter } from './components/safety/SafetyCenter.tsx';
 import { SettingsView } from './components/settings/SettingsView.tsx';
+import { DocsPresentationView } from './components/docs/DocsPresentationView.tsx';
 import { LegalModal } from './components/legal/LegalModal.tsx';
 import { CookieBanner } from './components/cookie/CookieBanner.tsx';
 import { AuthModal } from './components/auth/AuthModal.tsx';
@@ -28,6 +30,7 @@ function ScamShieldApp() {
 
   const [legalModalType, setLegalModalType] = useState<'privacy' | 'terms' | 'cookies' | null>(null);
   const [isAuthModalOpen, setIsAuthModalOpen] = useState<boolean>(false);
+  const [authModalMode, setAuthModalMode] = useState<'login' | 'register'>('register');
   const [forceCookieBanner, setForceCookieBanner] = useState<boolean>(false);
 
   const { getAuthHeaders } = useAuth();
@@ -72,7 +75,7 @@ function ScamShieldApp() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#EAF0F8] text-slate-900 font-sans">
+    <div className="min-h-screen flex flex-col bg-[#EAF0F8] dark:bg-[#0a0f1d] text-slate-900 dark:text-slate-100 font-sans transition-colors duration-200">
       {/* 3-Zone Navigation Header */}
       <Navbar
         currentTab={currentTab}
@@ -82,11 +85,14 @@ function ScamShieldApp() {
             setCurrentAnalysis(null);
           }
         }}
-        onOpenAuth={() => setIsAuthModalOpen(true)}
+        onOpenAuth={(mode = 'register') => {
+          setAuthModalMode(mode);
+          setIsAuthModalOpen(true);
+        }}
       />
 
       {/* Main Content Area */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+      <main className="flex-1 max-w-7xl w-full mx-auto px-3.5 sm:px-6 lg:px-8 py-4 sm:py-8">
         {currentTab === 'landing' && (
           <LandingView
             onStartScanning={handleStartScanning}
@@ -142,12 +148,15 @@ function ScamShieldApp() {
             />
           </div>
         )}
+
+        {currentTab === 'docs' && <DocsPresentationView />}
       </main>
 
       {/* Footer */}
       <Footer
         onOpenLegal={(type) => setLegalModalType(type)}
         onOpenSafety={() => setCurrentTab('safety')}
+        onOpenDocs={() => setCurrentTab('docs')}
       />
 
       {/* Global Modals & Controls */}
@@ -162,7 +171,9 @@ function ScamShieldApp() {
       />
 
       <AuthModal
+        key={authModalMode}
         isOpen={isAuthModalOpen}
+        initialMode={authModalMode}
         onClose={() => setIsAuthModalOpen(false)}
       />
     </div>
@@ -171,12 +182,14 @@ function ScamShieldApp() {
 
 export default function App() {
   return (
-    <LanguageProvider>
-      <AuthProvider>
-        <ToastProvider>
-          <ScamShieldApp />
-        </ToastProvider>
-      </AuthProvider>
-    </LanguageProvider>
+    <ThemeProvider>
+      <LanguageProvider>
+        <AuthProvider>
+          <ToastProvider>
+            <ScamShieldApp />
+          </ToastProvider>
+        </AuthProvider>
+      </LanguageProvider>
+    </ThemeProvider>
   );
 }

@@ -51,10 +51,10 @@ export const CookieBanner: React.FC<CookieBannerProps> = ({
   if (!isVisible) return null;
 
   return (
-    <div className="fixed bottom-4 left-4 right-4 sm:left-auto sm:right-6 sm:max-w-md z-50 bg-white border border-neutral-300 rounded-xl p-4 sm:p-5 shadow-2xl space-y-3.5">
+    <div className="fixed bottom-4 left-4 right-4 sm:left-auto sm:right-6 sm:max-w-md z-50 bg-white dark:bg-[#111a2e] border border-neutral-300 dark:border-slate-800 rounded-2xl p-4 sm:p-5 shadow-2xl space-y-3.5">
       <div className="flex items-start justify-between gap-3">
-        <div className="flex items-center gap-2 font-bold text-xs text-slate-900">
-          <Cookie className="w-4 h-4 text-emerald-800" />
+        <div className="flex items-center gap-2 font-bold text-xs text-slate-900 dark:text-slate-100">
+          <Cookie className="w-4 h-4 text-emerald-800 dark:text-emerald-400" />
           <span>Cookie & Privacy Preferences</span>
         </div>
         {forceOpen && (
@@ -63,14 +63,14 @@ export const CookieBanner: React.FC<CookieBannerProps> = ({
               setIsVisible(false);
               if (onCloseForce) onCloseForce();
             }}
-            className="text-slate-400 hover:text-slate-700"
+            className="text-slate-400 hover:text-slate-700 dark:hover:text-slate-200"
           >
             <X className="w-3.5 h-3.5" />
           </button>
         )}
       </div>
 
-      <p className="text-xs text-slate-600 leading-relaxed">
+      <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
         ScamShield AI utilizes strictly necessary storage for authentication and session history. We do not track personal identifying information across external services.
       </p>
 

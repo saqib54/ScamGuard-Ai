@@ -21,6 +21,29 @@ export interface UrlInspectionDetails {
   warnings: string[];
 }
 
+export interface BlacklistCheckItem {
+  name: string;
+  authority: string;
+  status: 'clean' | 'listed' | 'flagged' | 'timed_out';
+  details?: string;
+  threatType?: string;
+  queryTimeMs: number;
+  referenceUrl?: string;
+}
+
+export interface UrlReputationCheckResult {
+  queriedUrl: string;
+  hostname: string;
+  isBlacklisted: boolean;
+  overallVerdict: 'clean' | 'suspicious' | 'malicious';
+  threatCategory?: string;
+  riskScoreModifier: number;
+  blacklists: BlacklistCheckItem[];
+  summary: string;
+  checkedAt: string;
+  cached: boolean;
+}
+
 export interface AnalysisResult {
   id: string;
   inputType: InputType;
@@ -35,6 +58,7 @@ export interface AnalysisResult {
   recommendations: string[];
   explanation: string;
   urlDetails?: UrlInspectionDetails;
+  urlReputation?: UrlReputationCheckResult;
   engineType: EngineType;
   createdAt: string;
 }

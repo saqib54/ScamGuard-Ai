@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { Save, Download, Trash2, Cookie, Check, Sparkles } from 'lucide-react';
+import { Save, Download, Trash2, Cookie, Check, Sparkles, Sun, Moon } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext.tsx';
 import { useAuth } from '../../context/AuthContext.tsx';
+import { useTheme } from '../../context/ThemeContext.tsx';
 import { useToast } from '../ui/Toast.tsx';
 import { SupportedLanguage } from '../../types/index.ts';
 
@@ -13,6 +14,7 @@ interface SettingsViewProps {
 export const SettingsView: React.FC<SettingsViewProps> = ({ onOpenCookies, onClearAllHistory }) => {
   const { t, language, setLanguage } = useLanguage();
   const { getAuthHeaders, user } = useAuth();
+  const { theme, setTheme, isDark } = useTheme();
   const { showToast } = useToast();
 
   const [retentionDays, setRetentionDays] = useState<number>(90);
@@ -91,34 +93,67 @@ export const SettingsView: React.FC<SettingsViewProps> = ({ onOpenCookies, onCle
 
   if (isLoading) {
     return (
-      <div className="bg-white border border-neutral-200 rounded-xl p-8 text-center text-slate-500">
-        <Sparkles className="w-5 h-5 animate-spin mx-auto mb-2 text-emerald-800" />
+      <div className="clay-card p-8 text-center text-slate-500 dark:text-slate-400">
+        <Sparkles className="w-5 h-5 animate-spin mx-auto mb-2 text-emerald-800 dark:text-emerald-400" />
         <span className="text-xs">Loading user settings...</span>
       </div>
     );
   }
 
   return (
-    <div className="clay-card p-6 sm:p-8 space-y-7 max-w-3xl w-full">
+    <div className="clay-card p-4 sm:p-8 space-y-6 sm:space-y-7 max-w-3xl w-full">
       <div>
-        <h2 className="text-xl sm:text-2xl font-extrabold tracking-tight text-slate-900">
+        <h2 className="text-xl sm:text-2xl font-black tracking-tight text-slate-900 dark:text-slate-100">
           {t('settingsTitle')}
         </h2>
-        <p className="text-xs sm:text-sm text-slate-500 mt-1 font-medium">
+        <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1 font-medium">
           {t('settingsSubtitle')}
         </p>
       </div>
 
       <form onSubmit={handleSaveSettings} className="space-y-6">
+        {/* Theme & Display Mode Preference */}
+        <div className="space-y-3 pb-6 border-b border-slate-100 dark:border-slate-800">
+          <label className="block text-xs font-bold text-slate-900 dark:text-slate-100">
+            Theme & Appearance Mode
+          </label>
+          <div className="grid grid-cols-2 gap-3 max-w-sm">
+            <button
+              type="button"
+              onClick={() => setTheme('light')}
+              className={`p-3 rounded-xl border flex items-center justify-center gap-2 text-xs font-bold transition-all ${
+                theme === 'light'
+                  ? 'clay-button-primary'
+                  : 'clay-button-secondary text-slate-700 dark:text-slate-300'
+              }`}
+            >
+              <Sun className="w-4 h-4 text-amber-500" />
+              <span>Daylight Mode</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => setTheme('dark')}
+              className={`p-3 rounded-xl border flex items-center justify-center gap-2 text-xs font-bold transition-all ${
+                theme === 'dark'
+                  ? 'clay-button-primary'
+                  : 'clay-button-secondary text-slate-700 dark:text-slate-300'
+              }`}
+            >
+              <Moon className="w-4 h-4 text-indigo-400" />
+              <span>Night Mode (Dark)</span>
+            </button>
+          </div>
+        </div>
+
         {/* Retention Settings */}
-        <div className="space-y-3 pb-6 border-b border-slate-100">
-          <label className="block text-xs font-bold text-slate-900">
+        <div className="space-y-3 pb-6 border-b border-slate-100 dark:border-slate-800">
+          <label className="block text-xs font-bold text-slate-900 dark:text-slate-100">
             {t('dataRetentionLabel')}
           </label>
           <div className="space-y-2">
-            <div className="flex justify-between text-xs text-slate-600 font-medium">
+            <div className="flex justify-between text-xs text-slate-600 dark:text-slate-300 font-medium">
               <span>Automatic record expiration</span>
-              <span className="font-mono font-bold text-emerald-800">
+              <span className="font-mono font-bold text-emerald-800 dark:text-emerald-400">
                 {retentionDays} {t('daysSuffix')}
               </span>
             </div>
@@ -129,7 +164,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({ onOpenCookies, onCle
               step={7}
               value={retentionDays}
               onChange={(e) => setRetentionDays(parseInt(e.target.value, 10))}
-              className="w-full accent-emerald-800 cursor-pointer"
+              className="w-full accent-emerald-800 dark:accent-emerald-500 cursor-pointer"
             />
             <div className="flex justify-between text-[10px] text-slate-400 font-mono">
               <span>7 days</span>
@@ -145,21 +180,21 @@ export const SettingsView: React.FC<SettingsViewProps> = ({ onOpenCookies, onCle
               onChange={(e) => setAutoDeleteLowRisk(e.target.checked)}
               className="rounded text-emerald-800 focus:ring-emerald-700 w-4 h-4"
             />
-            <span className="text-xs text-slate-700 font-medium">
+            <span className="text-xs text-slate-700 dark:text-slate-300 font-medium">
               {t('autoDeleteLabel')}
             </span>
           </label>
         </div>
 
         {/* Preferred Language */}
-        <div className="space-y-2 pb-6 border-b border-slate-100">
-          <label className="block text-xs font-bold text-slate-900">
+        <div className="space-y-2 pb-6 border-b border-slate-100 dark:border-slate-800">
+          <label className="block text-xs font-bold text-slate-900 dark:text-slate-100">
             Preferred Default Language
           </label>
           <select
             value={preferredLang}
             onChange={(e) => setPreferredLang(e.target.value as SupportedLanguage)}
-            className="w-full max-w-xs py-2 px-3 text-xs bg-white border border-slate-200 rounded-xl text-slate-800 font-semibold focus:outline-none shadow-2xs"
+            className="w-full max-w-xs py-2 px-3 text-xs bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-slate-800 dark:text-slate-200 font-semibold focus:outline-none shadow-2xs"
           >
             <option value="en">English</option>
             <option value="ur">اردو (Urdu)</option>
@@ -182,22 +217,22 @@ export const SettingsView: React.FC<SettingsViewProps> = ({ onOpenCookies, onCle
 
       {/* Data Governance & Portability */}
       <div className="pt-2 space-y-3">
-        <h3 className="text-xs font-extrabold uppercase tracking-wider text-slate-500">
+        <h3 className="text-xs font-extrabold uppercase tracking-wider text-slate-500 dark:text-slate-400">
           Privacy & Data Governance
         </h3>
         <div className="flex flex-wrap gap-2.5">
           <button
             onClick={handleDownloadPersonalData}
-            className="clay-button-secondary flex items-center gap-1.5 px-3.5 py-2 text-xs font-bold text-slate-700"
+            className="clay-button-secondary flex items-center gap-1.5 px-3.5 py-2 text-xs font-bold text-slate-700 dark:text-slate-200"
           >
-            <Download className="w-3.5 h-3.5 text-slate-600" />
+            <Download className="w-3.5 h-3.5 text-slate-600 dark:text-slate-400" />
             <span>{t('downloadDataBtn')}</span>
           </button>
           <button
             onClick={onOpenCookies}
-            className="clay-button-secondary flex items-center gap-1.5 px-3.5 py-2 text-xs font-bold text-slate-700"
+            className="clay-button-secondary flex items-center gap-1.5 px-3.5 py-2 text-xs font-bold text-slate-700 dark:text-slate-200"
           >
-            <Cookie className="w-3.5 h-3.5 text-slate-600" />
+            <Cookie className="w-3.5 h-3.5 text-slate-600 dark:text-slate-400" />
             <span>{t('cookiePreferencesBtn')}</span>
           </button>
           <button

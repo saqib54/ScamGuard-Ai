@@ -40,6 +40,7 @@ export interface AnalysisRecord {
     hasDeceptiveTokens?: boolean;
     warnings: string[];
   };
+  url_reputation?: any;
   engine_type: 'hybrid' | 'heuristics' | 'gemini';
   created_at: string;
 }
@@ -112,28 +113,12 @@ class DatabaseService {
           this.auditLogs = parsed.auditLogs;
         }
       } else {
-        // Seed default demo user for frictionless evaluation
-        const demoId = 'usr_demo_101';
-        const salt = crypto.randomBytes(16).toString('hex');
-        const hash = crypto.pbkdf2Sync('DemoSecure123!', salt, 100000, 64, 'sha512').toString('hex');
-        const password_hash = `${salt}:${hash}`;
-        
-        const demoUser: UserRecord = {
-          id: demoId,
-          email: 'analyst@scamshield.ai',
-          password_hash,
-          name: 'Cyber Defense Analyst',
-          role: 'analyst',
-          created_at: new Date().toISOString(),
-          updated_at: new Date().toISOString(),
-        };
-        this.users.set(demoId, demoUser);
-
-        // Seed realistic historical analyses for rich dashboard metrics
+        // No pre-seeded demo user; genuine registration required first
+        // Seed realistic historical public threat intelligence records for threat landscape metrics
         const seedAnalyses: AnalysisRecord[] = [
           {
             id: 'scan_seed_001',
-            user_id: demoId,
+            user_id: null,
             input_type: 'sms',
             detected_language: 'ru',
             content_snippet: 'Apka Benazir Income Support Program (BISP) 25,000 rupay manzoor ho gaya hai. Abhi rabta karein 0301-XXXXXXX',
@@ -169,7 +154,7 @@ class DatabaseService {
           },
           {
             id: 'scan_seed_002',
-            user_id: demoId,
+            user_id: null,
             input_type: 'sms',
             detected_language: 'en',
             content_snippet: 'URGENT: Your HBL online banking access will be suspended within 2 hours. Click http://hbl-security-portal.online to verify your CNIC and OTP.',
@@ -221,7 +206,7 @@ class DatabaseService {
           },
           {
             id: 'scan_seed_003',
-            user_id: demoId,
+            user_id: null,
             input_type: 'sms',
             detected_language: 'en',
             content_snippet: 'Your verification code is 492810. Valid for 5 minutes. Do not share this code with anyone, including bank representatives.',

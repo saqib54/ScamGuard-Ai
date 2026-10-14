@@ -1,4 +1,4 @@
-import { Router, Request, Response } from 'express';
+import { Router, type Request, type Response } from 'express';
 import crypto from 'node:crypto';
 import { GoogleGenAI, Type } from '@google/genai';
 import { createRateLimiter } from '../middleware/security.ts';

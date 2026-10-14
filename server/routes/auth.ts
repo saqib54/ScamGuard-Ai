@@ -1,4 +1,4 @@
-import { Router, Request, Response } from 'express';
+import { Router, type Request, type Response } from 'express';
 import { db } from '../db/database.ts';
 import { createRateLimiter } from '../middleware/security.ts';
 
@@ -24,35 +24,47 @@ export function extractUser(req: Request) {
 
 // POST /api/v1/auth/register
 authRouter.post('/register', authLimiter, (req: Request, res: Response) => {
-  const { email, password, name } = req.body;
+  const rawEmail = typeof req.body.email === 'string' ? req.body.email.trim().toLowerCase() : '';
+  const rawPassword = typeof req.body.password === 'string' ? req.body.password : '';
+  const rawName = typeof req.body.name === 'string' ? req.body.name.trim() : '';
 
-  if (!email || typeof email !== 'string' || !email.includes('@')) {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+  if (!rawEmail || !emailRegex.test(rawEmail)) {
     res.status(400).json({
-      error: { code: 'INVALID_EMAIL', message: 'Please provide a valid email address.' }
+      error: { code: 'INVALID_EMAIL', message: 'Please provide a valid email address (e.g., analyst@security.org).' }
     });
     return;
   }
 
-  if (!password || typeof password !== 'string' || password.length < 8) {
+  if (!rawPassword || rawPassword.length < 8) {
     res.status(400).json({
       error: { code: 'WEAK_PASSWORD', message: 'Password must be at least 8 characters in length.' }
     });
     return;
   }
 
-  const existing = db.getUserByEmail(email);
-  if (existing) {
-    res.status(409).json({
-      error: { code: 'EMAIL_ALREADY_EXISTS', message: 'An account with this email address already exists.' }
+  const hasLetter = /[a-zA-Z]/.test(rawPassword);
+  const hasNumber = /[0-9]/.test(rawPassword);
+  if (!hasLetter || !hasNumber) {
+    res.status(400).json({
+      error: { code: 'WEAK_PASSWORD', message: 'Password must contain at least one letter and one number.' }
     });
     return;
   }
 
-  const password_hash = db.hashPassword(password);
+  const existing = db.getUserByEmail(rawEmail);
+  if (existing) {
+    res.status(409).json({
+      error: { code: 'EMAIL_ALREADY_EXISTS', message: 'An account with this email address already exists. Please log in.' }
+    });
+    return;
+  }
+
+  const password_hash = db.hashPassword(rawPassword);
   const user = db.createUser({
-    email,
+    email: rawEmail,
     password_hash,
-    name: name?.trim() || email.split('@')[0],
+    name: rawName || rawEmail.split('@')[0],
     role: 'user'
   });
 
@@ -76,7 +88,8 @@ authRouter.post('/register', authLimiter, (req: Request, res: Response) => {
 
 // POST /api/v1/auth/login
 authRouter.post('/login', authLimiter, (req: Request, res: Response) => {
-  const { email, password } = req.body;
+  const email = typeof req.body.email === 'string' ? req.body.email.trim().toLowerCase() : '';
+  const password = typeof req.body.password === 'string' ? req.body.password : '';
 
   if (!email || !password) {
     res.status(400).json({

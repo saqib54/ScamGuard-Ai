@@ -1,11 +1,11 @@
 import React from 'react';
 
 export const STICKER_IMAGES = {
-  heroShield: '/src/assets/images/clay_hero_shield_1791888744791.jpg',
-  phishingBlocked: '/src/assets/images/clay_phishing_hook_1791888744609.jpg',
-  aiRobotDetective: '/src/assets/images/clay_ai_robot_1791888745395.jpg',
-  securitySeal: '/src/assets/images/clay_security_badge_1791888745832.jpg',
-  scannerPhone: '/src/assets/images/clay_scanner_phone_1791888746206.jpg',
+  heroShield: '/assets/images/clay_hero_shield_1791888744791.jpg',
+  phishingBlocked: '/assets/images/clay_phishing_hook_1791888744609.jpg',
+  aiRobotDetective: '/assets/images/clay_ai_robot_1791888745395.jpg',
+  securitySeal: '/assets/images/clay_security_badge_1791888745832.jpg',
+  scannerPhone: '/assets/images/clay_scanner_phone_1791888746206.jpg',
 };
 
 interface ClayStickerProps {
@@ -27,6 +27,8 @@ export const ClaySticker: React.FC<ClayStickerProps> = ({
   badgeText,
   tapeTop = false,
 }) => {
+  const [imgFailed, setImgFailed] = React.useState(false);
+
   const sizeMap = {
     sm: 'w-16 h-16',
     md: 'w-24 h-24 sm:w-28 sm:h-28',
@@ -46,19 +48,27 @@ export const ClaySticker: React.FC<ClayStickerProps> = ({
 
       {/* Die-Cut Clay Sticker Container */}
       <div className="clay-sticker overflow-hidden group">
-        <div className="relative overflow-hidden rounded-2xl bg-white">
-          <img
-            src={imageSrc}
-            alt={alt}
-            referrerPolicy="no-referrer"
-            className={`${sizeMap[size]} object-cover object-center transition-transform duration-300 group-hover:scale-105`}
-          />
+        <div className="relative overflow-hidden rounded-2xl bg-white dark:bg-slate-800">
+          {!imgFailed ? (
+            <img
+              src={imageSrc}
+              alt={alt}
+              onError={() => setImgFailed(true)}
+              referrerPolicy="no-referrer"
+              className={`${sizeMap[size]} object-cover object-center transition-transform duration-300 group-hover:scale-105`}
+            />
+          ) : (
+            <div className={`${sizeMap[size]} flex flex-col items-center justify-center p-2 bg-gradient-to-br from-emerald-500/20 via-sky-500/20 to-indigo-500/20 text-emerald-800 dark:text-emerald-400 text-center font-bold`}>
+              <span className="text-2xl sm:text-3xl">🛡️</span>
+              <span className="text-[9px] uppercase tracking-wider mt-1 opacity-80">{badgeText || 'ScamShield'}</span>
+            </div>
+          )}
           {/* Glossy overlay */}
           <div className="absolute inset-0 bg-gradient-to-b from-white/30 via-transparent to-black/10 pointer-events-none rounded-2xl" />
         </div>
 
         {badgeText && (
-          <div className="absolute -bottom-2 -right-1 clay-sticker-tag bg-white text-slate-800 text-[10px] font-black uppercase tracking-wider">
+          <div className="absolute -bottom-2 -right-1 clay-sticker-tag bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 text-[10px] font-black uppercase tracking-wider shadow-sm">
             {badgeText}
           </div>
         )}

@@ -185,14 +185,14 @@ export const MessageScanner: React.FC<MessageScannerProps> = ({
     setIsAnalyzing(true);
     setErrorMessage(null);
 
-    // Multi-tier progress feedback
-    setAnalysisStep('1. Normalizing text and identifying language...');
+    // Multi-tier progress feedback with real-time blacklist query step
+    setAnalysisStep('1. Normalizing text, language tokens & extracting URLs...');
     const stepTimer1 = setTimeout(() => {
-      setAnalysisStep('2. Inspecting structural markers and URL payloads...');
+      setAnalysisStep('2. Querying public threat blacklists (URLhaus, OpenPhish, Spamhaus DBL, ThreatFox)...');
     }, 450);
     const stepTimer2 = setTimeout(() => {
-      setAnalysisStep('3. Synthesizing heuristic rules & threat intelligence...');
-    }, 900);
+      setAnalysisStep('3. Synthesizing heuristic rules & forensic threat intelligence...');
+    }, 950);
 
     try {
       const response = await fetch('/api/v1/analyses', {
@@ -279,14 +279,14 @@ export const MessageScanner: React.FC<MessageScannerProps> = ({
       {/* Title & Mode Switcher with Tactile Clay Badge */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-emerald-50 text-emerald-900 rounded-full text-xs font-bold mb-2 shadow-xs border border-white">
-            <Sparkles className="w-3.5 h-3.5 text-emerald-700" />
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 rounded-full text-xs font-bold mb-2 shadow-xs border border-white dark:border-emerald-800/60">
+            <Sparkles className="w-3.5 h-3.5 text-emerald-700 dark:text-emerald-400" />
             <span>AI-Powered Multi-Layer Threat Scanner</span>
           </div>
-          <h2 className="text-xl sm:text-2xl font-black tracking-tight text-slate-900">
+          <h2 className="text-xl sm:text-2xl font-black tracking-tight text-slate-900 dark:text-slate-100">
             {t('scannerTitle')}
           </h2>
-          <p className="text-xs sm:text-sm text-slate-500 mt-1 max-w-lg">
+          <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1 max-w-lg">
             {t('scannerSubtitle')}
           </p>
 
@@ -297,8 +297,8 @@ export const MessageScanner: React.FC<MessageScannerProps> = ({
               onClick={() => setScanMode('text')}
               className={`flex-1 py-2 px-3 text-xs font-extrabold rounded-xl transition-all flex items-center justify-center gap-2 ${
                 scanMode === 'text'
-                  ? 'clay-pill-active text-emerald-950 font-black'
-                  : 'text-slate-600 hover:text-slate-900'
+                  ? 'clay-pill-active text-emerald-950 dark:text-emerald-300 font-black'
+                  : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white'
               }`}
             >
               <MessageSquare className="w-3.5 h-3.5" />
@@ -309,11 +309,11 @@ export const MessageScanner: React.FC<MessageScannerProps> = ({
               onClick={() => setScanMode('image')}
               className={`flex-1 py-2 px-3 text-xs font-extrabold rounded-xl transition-all flex items-center justify-center gap-2 ${
                 scanMode === 'image'
-                  ? 'clay-pill-active text-sky-950 font-black'
-                  : 'text-slate-600 hover:text-slate-900'
+                  ? 'clay-pill-active text-sky-950 dark:text-sky-300 font-black'
+                  : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white'
               }`}
             >
-              <ImageIcon className="w-3.5 h-3.5 text-sky-700" />
+              <ImageIcon className="w-3.5 h-3.5 text-sky-700 dark:text-sky-400" />
               <span>Screenshot OCR (Vision)</span>
             </button>
           </div>
@@ -369,17 +369,17 @@ export const MessageScanner: React.FC<MessageScannerProps> = ({
           {/* Content Textarea with Clay Inset */}
           <div>
             <div className="flex items-center justify-between mb-2">
-              <label htmlFor="message-input" className="text-xs font-bold text-slate-700">
+              <label htmlFor="message-input" className="text-xs font-bold text-slate-700 dark:text-slate-300">
                 Suspicious Message or Link
               </label>
               <div className="flex items-center gap-2.5">
                 {/* Language Override */}
-                <div className="flex items-center gap-1.5 text-[11px] text-slate-500 font-medium">
+                <div className="flex items-center gap-1.5 text-[11px] text-slate-500 dark:text-slate-400 font-medium">
                   <span>Language:</span>
                   <select
                     value={languageOverride}
                     onChange={(e) => setLanguageOverride(e.target.value as any)}
-                    className="bg-white border border-slate-200 rounded-lg px-2 py-1 text-[11px] text-slate-800 font-semibold focus:outline-none shadow-2xs"
+                    className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg px-2 py-1 text-[11px] text-slate-800 dark:text-slate-200 font-semibold focus:outline-none shadow-2xs"
                   >
                     <option value="auto">{t('languageAuto')}</option>
                     <option value="en">{t('languageEnglish')}</option>
@@ -388,7 +388,7 @@ export const MessageScanner: React.FC<MessageScannerProps> = ({
                   </select>
                 </div>
 
-                <span className="text-[11px] font-mono font-bold text-slate-400">
+                <span className="text-[11px] font-mono font-bold text-slate-400 dark:text-slate-500">
                   {content.length}/{maxChars}
                 </span>
               </div>
@@ -409,7 +409,7 @@ export const MessageScanner: React.FC<MessageScannerProps> = ({
                     ? 'https://example-suspicious-portal.com/login'
                     : 'Paste SMS, WhatsApp message, email body, or Urdu text here...'
                 }
-                className="w-full bg-transparent text-xs sm:text-sm text-slate-900 placeholder-slate-400 focus:outline-none resize-y leading-relaxed font-sans"
+                className="w-full bg-transparent text-xs sm:text-sm text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none resize-y leading-relaxed font-sans"
                 dir={languageOverride === 'ur' ? 'rtl' : 'ltr'}
               />
             </div>

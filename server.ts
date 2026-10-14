@@ -14,6 +14,7 @@ import { authRouter } from './server/routes/auth.ts';
 import { analysesRouter } from './server/routes/analyses.ts';
 import { settingsRouter } from './server/routes/settings.ts';
 import { aiRouter } from './server/routes/ai.ts';
+import { reputationRouter } from './server/routes/reputation.ts';
 import { requestIdMiddleware, errorHandler } from './server/middleware/security.ts';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -54,8 +55,14 @@ async function startServer() {
   app.use('/api/v1/analyses', analysesRouter);
   app.use('/api/v1', settingsRouter);
   app.use('/api/v1/ai', aiRouter);
+  app.use('/api/v1/reputation', reputationRouter);
 
-  // 6. Vite middleware (dev) vs Static Assets (prod)
+  // 6. Serve static public assets explicitly (stickers, icons, images)
+  const publicPath = path.resolve(__dirname, 'public');
+  app.use('/assets', express.static(path.resolve(publicPath, 'assets')));
+  app.use(express.static(publicPath));
+
+  // 7. Vite middleware (dev) vs Static Assets (prod)
   if (!isProduction) {
     const vite = await createViteServer({
       server: { middlewareMode: true },
