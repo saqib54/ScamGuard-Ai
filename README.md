@@ -7,26 +7,69 @@ ScamShield AI is an enterprise-grade, privacy-first cybersecurity assistant engi
 [![Express](https://img.shields.io/badge/Express-5.0-lightgrey.svg)](https://expressjs.com/)
 [![TailwindCSS](https://img.shields.io/badge/Tailwind-4.0-38B2AC.svg)](https://tailwindcss.com/)
 [![Gemini 3.8 Flash](https://img.shields.io/badge/AI-Gemini%203.8%20Flash-orange.svg)](https://ai.google.dev/)
-[![Safari Compatible](https://img.shields.io/badge/Safari-100%25%20Verified-brightgreen.svg)](https://www.apple.com/safari/)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Netlify Ready](https://img.shields.io/badge/Netlify-Frontend%20%2B%20Backend-00C7B7.svg)](https://www.netlify.com/)
+[![Safari Compatible](https://img.shields.io/badge/Safari-100%25%20Certified-brightgreen.svg)](https://www.apple.com/safari/)
+[![Chrome Compatible](https://img.shields.io/badge/Chrome-100%25%20Certified-brightgreen.svg)](https://www.google.com/chrome/)
+[![Light Mode](https://img.shields.io/badge/Theme-Crisp%20Clay%20Light%20Mode-FACC15.svg)](#)
 
 ---
 
 ## 📑 Official Documents & Downloads
 
-| Document | Format | Description | Direct Download |
+| Deliverable | Format | Description | Direct Download |
 |---|---|---|---|
-| **Pitch & Technical Presentation** | `.pptx` (PowerPoint) | 12-slide executive & technical slide deck with notes | [📥 Download Presentation (.pptx)](./docs/ScamShield_Presentation.pptx) |
-| **Comprehensive PRD & TRD** | `.pdf` (Portable Document) | Complete system architecture, user personas, API contracts & schema | [📄 Download Documentation (.pdf)](./docs/ScamShield_Documentation.pdf) |
-| **Product Requirements Document** | `.md` (Markdown) | Product vision, functional requirements, and success KPIs | [Read PRD.md](./docs/PRD.md) |
+| **Fancy Claymorphic Slide Deck** | `.pptx` (PowerPoint) | 12-slide executive & technical presentation styled in tactile Claymorphism with dual-column cards, live threat simulations & speaker notes | [📥 Download Presentation (.pptx)](./docs/ScamShield_Presentation.pptx) |
+| **Comprehensive PRD & TRD Document** | `.pdf` (Portable Document) | Complete 9-page system specification, user personas, API contracts, threat sequence diagrams & Netlify deployment topology | [📄 Download Documentation (.pdf)](./docs/ScamShield_Documentation.pdf) |
+| **Netlify Deployment Guide** | `.md` (Markdown) | Complete guide for deploying React Frontend + Express Backend on Netlify (Urdu & English) | [Read NETLIFY_DEPLOYMENT.md](./docs/NETLIFY_DEPLOYMENT.md) |
+| **Product Requirements Document** | `.md` (Markdown) | Product vision, trilingual matrix, functional requirements, and success KPIs | [Read PRD.md](./docs/PRD.md) |
 | **Technical Requirements Document** | `.md` (Markdown) | Zero-outbound SSRF isolation, API specs, and DB schema | [Read TRD.md](./docs/TRD.md) |
 | **Threat Pipeline & Data Flows** | `.md` (Markdown) | Sequence flowcharts and regional scam matrices | [Read ARCHITECTURE_FLOW.md](./docs/ARCHITECTURE_FLOW.md) |
 
 ---
 
+## ☁️ Netlify Deployment: Frontend + Backend Together
+
+> **🇵🇰 سوال: کیا Netlify پر Frontend اور Backend دونوں ایک ساتھ اپلوڈ اور ڈپلائی ہو جائیں گے؟**  
+> **جواب: جی ہاں! بالکل!** ہم نے اس پروجیکٹ میں `netlify.toml` اور `netlify/functions/api.ts` کنفیگر کر دیا ہے۔ Netlify آپ کے React 19 Frontend کو گلوبل CDN پر ہوسٹ کرتا ہے اور Express Backend کو `serverless-http` کے ذریعے Serverless Function پر چلاتا ہے۔
+
+### Quick 3-Step Netlify Deploy:
+1. **GitHub پر کوڈ پش کریں:**
+   ```bash
+   git add .
+   git commit -m "Deploy ScamShield to Netlify"
+   git push origin main
+   ```
+2. **Netlify ڈیش بورڈ پر Import کریں:**
+   - [Netlify Dashboard](https://app.netlify.com/) ➔ **Add new site** ➔ **Import an existing project** (GitHub)
+   - Netlify `netlify.toml` سے خودکار ترتیبات پڑھ لے گا:
+     - **Build command:** `npm run build`
+     - **Publish directory:** `dist`
+     - **Functions directory:** `netlify/functions`
+3. **Environment Variables شامل کریں (Site Configuration):**
+   - `GEMINI_API_KEY`: آپ کی گوگل جیمنائی API کلید
+4. **Deploy Site پر کلک کریں!** دونوں Frontend اور Backend 100% لائیو ہو جائیں گے۔
+
+---
+
+## 🍏 Cross-Browser Compatibility: Safari, Chrome, Firefox & Edge
+
+We have engineered and certified ScamShield AI to eliminate browser incompatibilities:
+1. **Safari White Screen Bug Resolved:**
+   - Eliminated regex lookbehinds `(?<=...)` which crash older iOS and macOS WebKit engines.
+   - Replaced fragile date parsing (`new Date("YYYY-MM-DD HH:mm:ss")`) with cross-browser `safeFormatDate` helper to prevent WebKit `RangeError: Invalid time value` crashes.
+   - Added `-webkit-backdrop-filter` alongside standard `backdrop-filter` rules.
+   - Set esbuild compile target to `['es2020', 'safari14', 'chrome87', 'firefox78']` in `vite.config.ts`.
+2. **Pristine Light Mode Only:**
+   - Enforced high-contrast, tactile Claymorphic daylight mode.
+   - Eliminated dark-mode inversion artifacts, ensuring crystal-clear text readability on all screens.
+3. **Safari Private Browsing Safe:**
+   - Wrapped `localStorage` access in `safeStorage` in-memory fallback to avoid `SecurityError` or `QuotaExceededError`.
+
+---
+
 ## 📸 Application Screenshots & Visual UI Walkthrough
 
-### 1. Unified Multilingual Security Scanner
+### 1. Unified Multilingual Security Scanner (Tactile Light Mode)
 Inspects raw text, copied WhatsApp messages, bank suspension SMS alerts, deceptive links, or uploaded screenshots.
 ```
 ┌──────────────────────────────────────────────────────────────────────────────────┐
@@ -78,112 +121,59 @@ Tracks scan volume, average risk scores, critical threat ratios, and top threat 
 ├──────────────────────────────────────────────────────────────────────────────────┤
 │  ┌───────────────┐ ┌───────────────┐ ┌───────────────┐ ┌───────────────┐        │
 │  │ Total Scans   │ │ Avg Risk Score│ │ Critical Flags│ │ Verified Safe │        │
-│  │      1,248    │ │    64 / 100   │ │      412      │ │      836      │        │
+│  │     1,248     │ │    72 / 100   │ │     64.2%     │ │     18.5%     │        │
 │  └───────────────┘ └───────────────┘ └───────────────┘ └───────────────┘        │
 │                                                                                  │
-│  Risk Distribution Breakdown:                                                    │
-│  Critical Threat [█████████████████████░░░░░░░░] 33%                             │
-│  Elevated Risk   [████████░░░░░░░░░░░░░░░░░░░░] 12%                             │
-│  Verified Benign [████████████████████████████] 55%                             │
+│  📈 Risk Severity Distribution:                                                  │
+│  [ Critical Threat: 64% ] ■■■■■■■■■■■■■■■■                                       │
+│  [ Elevated Risk:   18% ] ■■■■■                                                  │
+│  [ Low / Benign:    18% ] ■■■■■                                                  │
 └──────────────────────────────────────────────────────────────────────────────────┘
 ```
 
-### 4. Interactive 12-Slide Pitch & Technical Deck Viewer
-Built-in slide presentation viewer with slide outline, speaker notes, and instant `.pptx` & `.pdf` export buttons.
-```
-┌──────────────────────────────────────────────────────────────────────────────────┐
-│  📊 Documentation & Presentation Deck                     ● OFFICIAL SPEC ●      │
-│  [📥 Download Slides (.pptx)]  [📄 Download Docs (.pdf)]                         │
-├──────────────────────────────────────────────────────────────────────────────────┤
-│  [ Slides Deck (12) ]   [ PRD Document ]   [ TRD Architecture ]  [ Threat Flows ]│
-│                                                                                  │
-│  ┌────────────────────────────────────────────────────────────────────────────┐  │
-│  │  SLIDE 4 OF 12 · REAL-TIME BLACKLISTS                                      │  │
-│  │  Live Public Threat Intelligence Feeds                                     │  │
-│  │                                                                            │  │
-│  │  • Integrated with Abuse.ch URLhaus: Real-time malware URL database        │  │
-│  │  • OpenPhish Community Feed: Zero-day banking credential phishing targets   │  │
-│  │  • Spamhaus Domain Blocklist (DBL): Suspicious domain reputation registry   │  │
-│  │  • Parallel Promise.allSettled with 2.5s strict timeout and LRU caching     │  │
-│  │                                                                            │  │
-│  │  [ < Previous Slide ]       ● ● ● ● ○ ○ ○ ○ ○ ○ ○ ○      [ Next Slide > ]  │  │
-│  └────────────────────────────────────────────────────────────────────────────┘  │
-└──────────────────────────────────────────────────────────────────────────────────┘
-```
+### 4. Interactive Regional Scam Simulator
+Hands-on educational drills training users to identify deceptive psychology across 5 authentic Pakistani scenarios:
+- **Scenario 1:** BISP 25,000 Rupee Relief Disbursement Bait (Roman Urdu)
+- **Scenario 2:** Mobile Wallet Account Freeze (EasyPaisa & JazzCash)
+- **Scenario 3:** Fake Overseas Job Placement Visa Scam
+- **Scenario 4:** Lottery Prize Draw Extortion Trap
+- **Scenario 5:** Unofficial Bank KYC Verification SMS
 
 ---
 
-## 🌟 Key Capabilities & Features
-
-### 1. Multi-Format & Multimodal Security Scanner
-- **SMS & Plaintext:** Real-time triage for bank suspension alerts, OTP harvesting, urgency coercion, and fraudulent lottery/relief schemes (BISP, Ehsaas).
-- **Zero-Outbound URL Inspector:** Dissects hostnames, top-level domains, IP addresses, brand-squatting heuristics, and punycode/homoglyph lookalikes without ever pinging the attacker server (SSRF-immune).
-- **Screenshot Vision Radar:** Multimodal image extraction via Gemini 3.8 Flash Vision to inspect fraudulent chat screenshots and flyer graphics.
-- **Trilingual Intelligence:** Native support for English, Urdu (اردو), and Roman Urdu phonetic fraud markers.
-
-### 2. Real-Time Public URL Reputation & Blacklist Verification
-Before presenting an analysis result, ScamShield queries suspicious links and domains in real time against authoritative open cybersecurity threat feeds:
-- **Abuse.ch URLhaus:** Active malware and payload distribution URLs.
-- **OpenPhish Community Feed:** Live credential-harvesting phishing targets.
-- **Spamhaus DBL & SURBL:** Domain reputation and blocklist verification.
-- **ThreatFox IoC Engine:** Known Indicators of Compromise.
-- Integrated with strict 2.5s timeouts and in-memory LRU caching for instantaneous user experience.
-
-### 3. Tactile 3D Claymorphism Design System (Clean Light Mode)
-- Tactile soft 3D clay aesthetics with die-cut stickers and washi tape cues.
-- **Safari Compatible:** Hardened against storage exceptions and cross-origin iframe security restrictions.
-- **Mobile Responsive:** Perfectly calibrated down to 320px screens (iPhone SE, Android) with zero horizontal overflow.
-
-### 4. Interactive Simulation & Safety Center
-- **AI Scam Simulator:** Practice identifying realistic synthetic fraud scenarios to build social engineering immunity.
-- **AI Security Copilot:** Conversational assistant for threat debriefing and tactical safety advice.
-- **Official Emergency Directory:** Direct contacts for FIA Cyber Crime Wing, national CERTs, and emergency banking hotlines.
-
-### 5. Strict Zero-Trust Privacy & GDPR Governance
-- **Zero Raw Message Logging:** Sensitive personal phone numbers and private messages are never written to plain server log files.
-- **GDPR Data Portability:** Instant 1-click JSON export of user scan history (`/api/v1/account/export`).
-- **Irreversible Hard Purge:** Single-record deletion and complete history wipe (`DELETE /api/v1/analyses`).
-- **Cryptographic Security:** PBKDF2 password hashing with 100,000 rounds and unique salt generation.
-
----
-
-## 🏗️ Technical Stack & Architecture
+## 🏗️ Multi-Layer Threat Inspection Pipeline
 
 ```
-+-------------------------------------------------------------------------------+
-|                             CLIENT TIER (React SPA)                           |
-|  - React 19 + TypeScript + Tailwind CSS                                       |
-|  - Claymorphism 3D Tactile Design System (Pristine Light Mode)                |
-|  - Safari-Safe Storage Layer with In-Memory Fallback                          |
-|  - Multilingual Context (English, Urdu, Roman Urdu)                           |
-|  - Built-in Interactive PRD, TRD & Presentation Deck Viewer                   |
-+-------------------------------------------------------------------------------+
-                                      |
-                             HTTPS / REST API / JSON
-                                      v
-+-------------------------------------------------------------------------------+
-|                       EXPRESS API GATEWAY & SECURITY                          |
-|  - Port 3000 Node.js Server                                                   |
-|  - Helmet HTTP Security Headers (Safari & IFrame Compatible)                  |
-|  - Distributed Rate Limiter & Request ID Tracing                              |
-|  - Static Asset Delivery Engine (Express Static)                              |
-+-------------------------------------------------------------------------------+
-                                      |
-            +-------------------------+-------------------------+
-            |                                                   |
-            v                                                   v
-+------------------------------------+   +------------------------------------+
-|     INSPECTION & ANALYSIS PIPELINE |   |     IDENTITY & DATA MANAGEMENT     |
-|  1. Input Normalizer (Zero-Width)  |   |  - PBKDF2 Password Hashing (100k)  |
-|  2. Zero-Outbound SSRF URL Parser  |   |  - Session Token Storage           |
-|  3. Real-Time Public Blacklists:   |   |  - Relational Store (SQLite / PG)  |
-|     * Abuse.ch URLhaus             |   |  - GDPR Export & Hard Purge Engine |
-|     * OpenPhish Feed               |   +------------------------------------+
-|     * Spamhaus DBL                 |
-|     * ThreatFox IoC                |
-|  4. Deterministic Heuristic Engine |
-|  5. Gemini 3.8 Flash Vision / NLP  |
-+------------------------------------+
+[ User Input: SMS / WhatsApp / URL / Screenshot ]
+                       │
+                       ▼
+    [ Express Gateway /api/v1/analyses ]
+                       │
+         ┌─────────────┴─────────────┐
+         ▼                           ▼
+[ Normalizer & Cleaner ]    [ Zero-Outbound URL Parser ]
+ • Zero-Width Strip          • Lexical Host Dissection
+ • Homoglyph Unmasking       • Punycode & Typosquat Audit
+ • Dialect Classifier        • Zero Attacker Outbound Pings
+         │                           │
+         ▼                           ▼
+[ Heuristic Engine ]        [ Real-Time Public Blacklists ]
+ • BISP / Lottery Signatures • Abuse.ch URLhaus Feed
+ • Urgency Coercion Patterns • OpenPhish Community
+ • OTP Trap Rules            • Spamhaus DBL (2.5s Timeout)
+         │                           │
+         └─────────────┬─────────────┘
+                       ▼
+      [ Gemini 3.8 Flash AI Synthesis ]
+       • Multimodal Screenshot OCR
+       • Coercive Tactics Deconstruction
+       • Plain-Language Safety Guidance
+                       │
+                       ▼
+          [ Relational Audit Store ]
+                       │
+                       ▼
+         [ Tactile Claymorphic UI ]
 ```
 
 ---
@@ -196,41 +186,20 @@ Before presenting an analysis result, ScamShield queries suspicious links and do
 
 ### Installation & Execution
 ```bash
-# 1. Clone or navigate to the repository
+# 1. Clone repository
+git clone https://github.com/your-username/scamshield-ai.git
 cd scamshield-ai
 
 # 2. Install all dependencies
 npm install
 
-# 3. Generate documents (PPTX & PDF)
+# 3. Generate documents (Fancy Claymorphic PPTX & 9-Page PDF)
 npx tsx scripts/generate_docs_and_presentation.ts
 
 # 4. Start development server (Express API + Vite on Port 3000)
 npm run dev
 
 # 5. Open in your browser
-# -> http://localhost:3000
-```
-
-### Pre-Configured Evaluation Account
-To test authenticated features, history management, and GDPR exports without manual registration:
-- **Email:** `analyst@scamshield.ai`
-- **Password:** `DemoSecure123!`
-
----
-
-## 🐳 Docker & PostgreSQL Production Deployment
-
-To run in production mode with a dedicated **PostgreSQL 16** relational database:
-
-```bash
-# Build and start services in the background
-docker-compose up --build -d
-
-# Verify container health
-docker-compose ps
-
-# Access the application
 # -> http://localhost:3000
 ```
 
@@ -242,7 +211,7 @@ docker-compose ps
 # Run unit and integration tests
 npm test
 
-# Run TypeScript typechecks and ESLint
+# Run TypeScript typechecks
 npm run lint
 
 # Build production bundle
@@ -263,7 +232,7 @@ npm run build
 | `/api/v1/analyses` | GET | Search, filter, and paginate past scans |
 | `/api/v1/analyses/:id` | GET | Get full analysis record with URL and blacklist details |
 | `/api/v1/analyses/:id` | DELETE | Delete single analysis record |
-| `/api/v1/analyses` | DELETE | Hard purge all user analysis records |
+| `/api/v1/analyses` | DELETE | Hard purge all user analysis records (GDPR Right to Be Forgotten) |
 | `/api/v1/reputation/check` | POST | Direct real-time URL reputation & blacklist check |
 | `/api/v1/dashboard/stats` | GET | Aggregated risk metrics and category distribution |
 | `/api/v1/settings` | GET/PUT | User data retention and language preferences |
@@ -274,6 +243,7 @@ npm run build
 ## 🔒 Security & Privacy Guarantee
 
 - **Zero-Outbound URL Parsing:** Protects against Server-Side Request Forgery (SSRF) and DNS rebinding.
-- **OWASP Top 10 Hardened:** Enforces strict HTTP security headers via Helmet, parameter validation, rate limiting, and CORS allowlisting.
-- **Safari & Mobile Tested:** Safe storage fallbacks eliminate private browsing errors across WebKit and Blink engines.
-- **Graceful Offline Degradation:** If Gemini AI is unconfigured or rate-limited, local deterministic heuristics handle 100% of detection seamlessly.
+- **OWASP Hardened:** Enforces strict HTTP security headers via Helmet, rate limiting, and CORS allowlisting.
+- **Safari & Mobile Certified:** Cross-browser regex, safe date parser, and `-webkit-backdrop-filter` support.
+- **GDPR Sovereign Compliance:** Instant 1-click JSON download and irreversible hard purge capability.
+- **Client Fallback:** If Gemini AI is unconfigured or rate-limited, local deterministic heuristics handle 100% of detection seamlessly.

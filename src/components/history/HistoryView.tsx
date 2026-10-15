@@ -4,6 +4,7 @@ import { useLanguage } from '../../context/LanguageContext.tsx';
 import { useAuth } from '../../context/AuthContext.tsx';
 import { useToast } from '../ui/Toast.tsx';
 import { ClayStamp } from '../ui/ClaySticker.tsx';
+import { formatSafeDate, parseSafeDate } from '../../utils/date.ts';
 
 interface HistoryItem {
   id: string;
@@ -115,7 +116,7 @@ export const HistoryView: React.FC<HistoryViewProps> = ({ onSelectAnalysis, onSt
     const headers = ['ID', 'Date', 'Type', 'Language', 'Risk Score', 'Risk Level', 'Snippet'];
     const rows = records.map(r => [
       r.id,
-      new Date(r.createdAt).toISOString(),
+      parseSafeDate(r.createdAt)?.toISOString() || r.createdAt,
       r.inputType,
       r.detectedLanguage,
       r.riskScore,
@@ -239,7 +240,7 @@ export const HistoryView: React.FC<HistoryViewProps> = ({ onSelectAnalysis, onSt
                     {record.inputType}
                   </span>
                   <span className="text-xs text-slate-400 font-mono">
-                    {new Date(record.createdAt).toLocaleDateString()}
+                    {formatSafeDate(record.createdAt)}
                   </span>
                   <span className="text-xs text-slate-400">·</span>
                   <span className="text-xs text-slate-500 dark:text-slate-400 capitalize">

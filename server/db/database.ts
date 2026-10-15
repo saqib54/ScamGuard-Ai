@@ -83,7 +83,8 @@ class DatabaseService {
   private auditLogs: AuditLogRecord[] = [];
 
   constructor() {
-    this.dataDir = path.resolve(process.cwd(), '.data');
+    const isServerless = !!(process.env.NETLIFY || process.env.AWS_LAMBDA_FUNCTION_NAME || process.env.LAMBDA_TASK_ROOT);
+    this.dataDir = isServerless ? '/tmp/.data' : path.resolve(process.cwd(), '.data');
     this.dbFile = path.join(this.dataDir, 'scamshield_store.json');
     this.init();
   }

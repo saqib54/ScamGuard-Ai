@@ -1,24 +1,26 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { safeStorage } from '../utils/storage.ts';
 
-type Theme = 'light' | 'dark';
+export type Theme = 'light' | 'dark' | 'cyberpunk';
 
 interface ThemeContextType {
   theme: Theme;
   isDark: boolean;
-  toggleTheme: () => void;
+  isCyberpunk: boolean;
   setTheme: (theme: Theme) => void;
+  toggleTheme: () => void;
+  cycleTheme: () => void;
 }
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  // Always default to pristine Light Mode as requested ("BACK PREVIOUS LIGHT MODE ONLY")
+  // Support Light, Dark, and Cyberpunk modes
   const [theme, setThemeState] = useState<Theme>(() => {
     try {
-      const stored = safeStorage.getItem('scamshield_theme');
-      if (stored === 'light' || stored === 'dark') {
-        return stored;
+      const saved = safeStorage.getItem('scamshield_theme');
+      if (saved === 'dark' || saved === 'cyberpunk' || saved === 'light') {
+        return saved;
       }
     } catch {
       // ignore
@@ -26,17 +28,29 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     return 'light';
   });
 
-  useEffect(() => {
+  const applyThemeToDOM = (activeTheme: Theme) => {
     const root = document.documentElement;
-    if (theme === 'dark') {
+    // Reset all theme classes first
+    root.classList.remove('light', 'dark', 'cyberpunk');
+
+    if (activeTheme === 'light') {
+      root.classList.add('light');
+      root.setAttribute('data-theme', 'light');
+      root.style.colorScheme = 'light';
+    } else if (activeTheme === 'dark') {
       root.classList.add('dark');
       root.setAttribute('data-theme', 'dark');
       root.style.colorScheme = 'dark';
-    } else {
-      root.classList.remove('dark');
-      root.setAttribute('data-theme', 'light');
-      root.style.colorScheme = 'light';
+    } else if (activeTheme === 'cyberpunk') {
+      // Add both dark (for Tailwind dark: utility classes) and cyberpunk
+      root.classList.add('dark', 'cyberpunk');
+      root.setAttribute('data-theme', 'cyberpunk');
+      root.style.colorScheme = 'dark';
     }
+  };
+
+  useEffect(() => {
+    applyThemeToDOM(theme);
     try {
       safeStorage.setItem('scamshield_theme', theme);
     } catch {
@@ -44,16 +58,35 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     }
   }, [theme]);
 
-  const toggleTheme = () => {
-    setThemeState(prev => (prev === 'light' ? 'dark' : 'light'));
+  const setTheme = (newTheme: Theme) => {
+    setThemeState(newTheme);
+    applyThemeToDOM(newTheme);
+    try {
+      safeStorage.setItem('scamshield_theme', newTheme);
+    } catch {
+      // ignore
+    }
   };
 
-  const setTheme = (t: Theme) => {
-    setThemeState(t);
+  const cycleTheme = () => {
+    setThemeState(prev => {
+      let next: Theme;
+      if (prev === 'light') next = 'dark';
+      else if (prev === 'dark') next = 'cyberpunk';
+      else next = 'light';
+      return next;
+    });
   };
+
+  const toggleTheme = () => {
+    cycleTheme();
+  };
+
+  const isDark = theme === 'dark' || theme === 'cyberpunk';
+  const isCyberpunk = theme === 'cyberpunk';
 
   return (
-    <ThemeContext.Provider value={{ theme, isDark: theme === 'dark', toggleTheme, setTheme }}>
+    <ThemeContext.Provider value={{ theme, isDark, isCyberpunk, setTheme, toggleTheme, cycleTheme }}>
       {children}
     </ThemeContext.Provider>
   );

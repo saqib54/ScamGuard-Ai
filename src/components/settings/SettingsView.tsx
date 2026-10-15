@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Save, Download, Trash2, Cookie, Check, Sparkles, Sun, Moon } from 'lucide-react';
+import { Save, Download, Trash2, Cookie, Check, Sparkles, Sun, Moon, Zap } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext.tsx';
 import { useAuth } from '../../context/AuthContext.tsx';
 import { useTheme } from '../../context/ThemeContext.tsx';
@@ -14,7 +14,7 @@ interface SettingsViewProps {
 export const SettingsView: React.FC<SettingsViewProps> = ({ onOpenCookies, onClearAllHistory }) => {
   const { t, language, setLanguage } = useLanguage();
   const { getAuthHeaders, user } = useAuth();
-  const { theme, setTheme, isDark } = useTheme();
+  const { theme, setTheme } = useTheme();
   const { showToast } = useToast();
 
   const [retentionDays, setRetentionDays] = useState<number>(90);
@@ -117,31 +117,14 @@ export const SettingsView: React.FC<SettingsViewProps> = ({ onOpenCookies, onCle
           <label className="block text-xs font-bold text-slate-900 dark:text-slate-100">
             Theme & Appearance Mode
           </label>
-          <div className="grid grid-cols-2 gap-3 max-w-sm">
-            <button
-              type="button"
-              onClick={() => setTheme('light')}
-              className={`p-3 rounded-xl border flex items-center justify-center gap-2 text-xs font-bold transition-all ${
-                theme === 'light'
-                  ? 'clay-button-primary'
-                  : 'clay-button-secondary text-slate-700 dark:text-slate-300'
-              }`}
-            >
-              <Sun className="w-4 h-4 text-amber-500" />
-              <span>Daylight Mode</span>
-            </button>
-            <button
-              type="button"
-              onClick={() => setTheme('dark')}
-              className={`p-3 rounded-xl border flex items-center justify-center gap-2 text-xs font-bold transition-all ${
-                theme === 'dark'
-                  ? 'clay-button-primary'
-                  : 'clay-button-secondary text-slate-700 dark:text-slate-300'
-              }`}
-            >
-              <Moon className="w-4 h-4 text-indigo-400" />
-              <span>Night Mode (Dark)</span>
-            </button>
+          <div className="max-w-sm p-3.5 rounded-xl bg-slate-50 border border-slate-200 flex items-center gap-3">
+            <div className="w-8 h-8 rounded-lg bg-amber-100 text-amber-700 flex items-center justify-center">
+              <Sun className="w-5 h-5" />
+            </div>
+            <div>
+              <span className="text-xs font-bold text-slate-900 block">Tactile Daylight Mode (Active)</span>
+              <span className="text-[11px] text-slate-500 block">High-contrast, crisp claymorphism optimized for Safari & Chrome.</span>
+            </div>
           </div>
         </div>
 

@@ -5,6 +5,7 @@ import {
 } from 'lucide-react';
 import { UrlReputationCheckResult, BlacklistCheckItem } from '../../types/index.ts';
 import { useToast } from '../ui/Toast.tsx';
+import { formatSafeTime } from '../../utils/date.ts';
 
 interface UrlReputationCardProps {
   initialReputation?: UrlReputationCheckResult;
@@ -104,7 +105,7 @@ export const UrlReputationCard: React.FC<UrlReputationCardProps> = ({
         </div>
         {reputation?.checkedAt && (
           <span className="text-[10px] font-mono text-slate-400 dark:text-slate-500 shrink-0">
-            Checked: {new Date(reputation.checkedAt).toLocaleTimeString()}
+            Checked: {formatSafeTime(reputation.checkedAt)}
           </span>
         )}
       </div>

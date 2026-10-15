@@ -1,8 +1,12 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="light">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+    <meta name="theme-color" content="#EAF0F8" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="format-detection" content="telephone=no" />
     <title>ScamShield AI — Think Before You Click</title>
     <meta name="description" content="Intelligent cybersecurity assistant to detect phishing, smishing, scam messages, and suspicious URLs across English, Urdu, and Roman Urdu." />
     <meta property="og:title" content="ScamShield AI — Think Before You Click" />
@@ -12,10 +16,26 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet" />
+    <style>
+      /* Theme adaptive base styles to prevent Safari FOUC or white flash */
+      html, body {
+        background-color: #EAF0F8;
+        color: #0f172a;
+        -webkit-text-size-adjust: 100%;
+        -webkit-tap-highlight-color: transparent;
+      }
+      html.dark:not(.cyberpunk), html.dark:not(.cyberpunk) body {
+        background-color: #0a0f1d;
+        color: #f1f5f9;
+      }
+      html.cyberpunk, html.cyberpunk body {
+        background-color: #07090e;
+        color: #e0f2fe;
+      }
+    </style>
   </head>
-  <body class="bg-[#EEF3F8] text-slate-900 antialiased selection:bg-emerald-100 selection:text-emerald-900">
+  <body class="antialiased selection:bg-emerald-100 selection:text-emerald-900">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
-

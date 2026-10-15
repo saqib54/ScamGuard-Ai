@@ -10,6 +10,7 @@ import { useToast } from '../ui/Toast.tsx';
 import { AnalysisResult, RiskLevel } from '../../types/index.ts';
 import { ClaySticker, ClayStamp, STICKER_IMAGES } from '../ui/ClaySticker.tsx';
 import { UrlReputationCard } from './UrlReputationCard.tsx';
+import { formatSafeDateTime } from '../../utils/date.ts';
 
 interface AnalysisResultCardProps {
   analysis: AnalysisResult;
@@ -94,10 +95,10 @@ export const AnalysisResultCard: React.FC<AnalysisResultCardProps> = ({ analysis
   const theme = getRiskTheme(analysis.riskLevel);
   const RiskIcon = theme.icon;
 
-  const handleCopy = () => {
+  const handleCopy = async () => {
     const reportText = `[ScamShield AI Security Report]
 Analysis ID: ${analysis.id}
-Date: ${new Date(analysis.createdAt).toLocaleString()}
+Date: ${formatSafeDateTime(analysis.createdAt)}
 Input Type: ${analysis.inputType.toUpperCase()} (${analysis.detectedLanguage})
 Risk Score: ${analysis.riskScore}/100 [${theme.label}]
 Analysis Engine: ${analysis.engineType}
@@ -111,10 +112,23 @@ ${analysis.indicators.map(i => `• [${i.severity.toUpperCase()}] ${i.title}: ${
 Recommended Safe Actions:
 ${analysis.recommendations.map(r => `• ${r}`).join('\n')}
 `;
-    navigator.clipboard.writeText(reportText);
-    setCopied(true);
-    showToast('Report copied to clipboard.', 'success');
-    setTimeout(() => setCopied(false), 2500);
+    try {
+      if (navigator?.clipboard?.writeText) {
+        await navigator.clipboard.writeText(reportText);
+      } else {
+        const textarea = document.createElement('textarea');
+        textarea.value = reportText;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+      }
+      setCopied(true);
+      showToast('Report copied to clipboard.', 'success');
+      setTimeout(() => setCopied(false), 2500);
+    } catch {
+      showToast('Report ready. Please copy manually.', 'info');
+    }
   };
 
   const handleExportJson = () => {

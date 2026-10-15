@@ -7,6 +7,7 @@ import { useLanguage } from '../../context/LanguageContext.tsx';
 import { useAuth } from '../../context/AuthContext.tsx';
 import { DashboardStats } from '../../types/index.ts';
 import { ClaySticker, ClayStamp, STICKER_IMAGES } from '../ui/ClaySticker.tsx';
+import { formatSafeTime } from '../../utils/date.ts';
 
 interface DashboardViewProps {
   onStartScan: () => void;
@@ -295,7 +296,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ onStartScan, onSel
                   </span>
                   <span className="text-xs text-slate-400">·</span>
                   <span className="text-xs text-slate-400 font-mono">
-                    {new Date(item.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                    {formatSafeTime(item.created_at)}
                   </span>
                 </div>
                 <p className="text-xs text-slate-800 dark:text-slate-200 truncate font-mono font-medium">

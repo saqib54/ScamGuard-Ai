@@ -6,7 +6,7 @@ import {
 } from 'lucide-react';
 import { ClaySticker, ClayStamp, STICKER_IMAGES } from '../ui/ClaySticker.tsx';
 
-type DocSection = 'presentation' | 'prd' | 'trd' | 'flow';
+type DocSection = 'presentation' | 'prd' | 'trd' | 'flow' | 'netlify';
 
 export const DocsPresentationView: React.FC = () => {
   const [activeSection, setActiveSection] = useState<DocSection>('presentation');
@@ -401,6 +401,18 @@ export const DocsPresentationView: React.FC = () => {
               <GitBranch className="w-3.5 h-3.5" />
               <span>Threat Flowcharts</span>
             </button>
+
+            <button
+              onClick={() => setActiveSection('netlify')}
+              className={`px-3 py-1.5 text-xs font-extrabold rounded-lg transition-all flex items-center gap-1.5 whitespace-nowrap ${
+                activeSection === 'netlify'
+                  ? 'bg-emerald-600 text-white shadow-xs'
+                  : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white'
+              }`}
+            >
+              <Globe className="w-3.5 h-3.5" />
+              <span>Netlify Deploy Guide</span>
+            </button>
           </div>
         </div>
       </div>
@@ -778,6 +790,103 @@ export const DocsPresentationView: React.FC = () => {
               <pre className="text-amber-400 font-bold mb-2">// 4. STORAGE & CLIENT RENDERING</pre>
               [Relational Audit Store] ➔ [Tactile Claymorphic Risk Card] ➔ [Actionable Next Steps]
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* SECTION 5: NETLIFY DEPLOYMENT GUIDE (FRONTEND + BACKEND) */}
+      {activeSection === 'netlify' && (
+        <div className="clay-card p-6 sm:p-9 bg-white dark:bg-[#111a2e] space-y-6">
+          <div className="border-b border-slate-100 dark:border-slate-800 pb-4">
+            <span className="text-[11px] font-mono uppercase font-black text-emerald-800 dark:text-emerald-400 tracking-wider">
+              Production Cloud Deployment Spec
+            </span>
+            <h3 className="text-2xl font-black text-slate-900 dark:text-slate-100 tracking-tight mt-1">
+              Netlify Full-Stack Deployment: Frontend + Backend
+            </h3>
+            <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+              Complete configuration to deploy both the React 19 Single Page Application and the Express API together on Netlify.
+            </p>
+          </div>
+
+          {/* Urdu Language Explanation Card */}
+          <div className="p-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-950 space-y-2">
+            <div className="flex items-center gap-2 font-black text-sm">
+              <span className="text-lg">🇵🇰</span>
+              <span>اردو گائیڈ: کیا Netlify پر Frontend اور Backend دونوں چلیں گے؟</span>
+            </div>
+            <p className="text-xs leading-relaxed font-medium">
+              <strong>جی ہاں! بالکل!</strong> Netlify آپ کے React Frontend کو الٹرا فاسٹ CDN سے سرور کرتا ہے اور Express Backend کو <code>netlify/functions/api.ts</code> اور <code>serverless-http</code> کے ذریعے سرور لیس فنکشنز (Serverless Functions) پر چلاتا ہے۔ ہم نے <code>netlify.toml</code> اور <code>api.ts</code> پہلے سے بنا دیا ہے، اس لیے بس GitHub سے ریپو کنیکٹ کریں یا Netlify پر اپلوڈ کریں، یہ دونوں ایک ساتھ 100% لائیو چلیں گے۔
+            </p>
+          </div>
+
+          {/* Step by Step English Guide */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+              <div className="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center font-black text-xs">
+                1
+              </div>
+              <h4 className="text-sm font-bold text-slate-900">Push to GitHub</h4>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                Push this entire project to your GitHub repository. Netlify will auto-detect the configuration.
+              </p>
+              <pre className="p-2 bg-slate-900 text-slate-200 text-[10px] font-mono rounded-lg">
+git add .
+git commit -m "Deploy"
+git push
+              </pre>
+            </div>
+
+            <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+              <div className="w-8 h-8 rounded-lg bg-sky-100 text-sky-800 flex items-center justify-center font-black text-xs">
+                2
+              </div>
+              <h4 className="text-sm font-bold text-slate-900">Import in Netlify</h4>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                Go to Netlify dashboard ➔ "Add new site" ➔ "Import an existing project" from GitHub.
+              </p>
+              <div className="text-[11px] font-mono text-slate-700 bg-white p-2 rounded-lg border border-slate-200">
+                • Build: npm run build<br />
+                • Publish: dist<br />
+                • Functions: netlify/functions
+              </div>
+            </div>
+
+            <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+              <div className="w-8 h-8 rounded-lg bg-indigo-100 text-indigo-800 flex items-center justify-center font-black text-xs">
+                3
+              </div>
+              <h4 className="text-sm font-bold text-slate-900">Set Env & Deploy</h4>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                Add <code>GEMINI_API_KEY</code> in Netlify Site Configuration, then click Deploy Site!
+              </p>
+              <div className="text-[11px] font-mono text-emerald-700 font-bold bg-emerald-100/50 p-2 rounded-lg border border-emerald-200">
+                ✔ 100% Automated Deployment<br />
+                ✔ Safari & Chrome Certified
+              </div>
+            </div>
+          </div>
+
+          {/* Architecture Topology */}
+          <div className="p-5 rounded-2xl bg-slate-900 text-slate-200 font-mono text-xs space-y-3">
+            <div className="text-emerald-400 font-bold">// NETLIFY RUNTIME ARCHITECTURE</div>
+            <pre className="text-slate-300 leading-relaxed overflow-x-auto">
+[ User Request ]
+       │
+       ├─► (/*) ➔ Netlify Global CDN ➔ dist/index.html (React 19 Frontend)
+       │
+       └─► (/api/*) ➔ Netlify Rewrite ➔ netlify/functions/api.ts (Express Backend)
+                                                 │
+                                                 ▼
+                                     [ serverless-http Wrapper ]
+                                                 │
+                                                 ▼
+                                    • Rate Limiter & Security Headers
+                                    • Zero-Outbound SSRF Link Parser
+                                    • Live Blacklists (URLhaus / OpenPhish)
+                                    • Google Gemini 3.8 Flash Vision OCR
+                                    • Serverless /tmp Database Store
+            </pre>
           </div>
         </div>
       )}
