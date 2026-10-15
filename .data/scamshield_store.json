@@ -26,6 +26,15 @@
       "role": "user",
       "created_at": "2026-10-14T13:56:43.185Z",
       "updated_at": "2026-10-14T13:56:43.185Z"
+    },
+    {
+      "id": "usr_82bb919e-85e4-440d-8d0b-8939b9b9420f",
+      "email": "tester_1792067795518@example.com",
+      "password_hash": "cc90ac99c9460f67c69e3b64733ffe26:080e3e1213d5b3856138f7819d11898f6002f476e684688e258f85428c4abe01d876c20fed94945350e17dca514dea730759b25a70fc3b1cdc3c7081d8e4578e",
+      "name": "Integration Tester",
+      "role": "user",
+      "created_at": "2026-10-15T12:36:35.592Z",
+      "updated_at": "2026-10-15T12:36:35.592Z"
     }
   ],
   "analyses": [
@@ -400,6 +409,93 @@
       ],
       "engine_type": "gemini",
       "created_at": "2026-10-14T13:56:43.324Z"
+    },
+    {
+      "id": "scan_1792067795512_b4a07fe6",
+      "user_id": "test_integration_user",
+      "input_type": "sms",
+      "detected_language": "ru",
+      "content_snippet": "URGENT: Your bank account will be blocked today unless you click http://suspicious-bank-login.xyz",
+      "content_hash": "7fdfbd07ca76eec8e3e1661d42141f59bef2656602cf1ac392117931ae959843",
+      "risk_score": 51,
+      "risk_level": "elevated",
+      "indicators": [
+        {
+          "id": "rule_account_threat",
+          "title": "Manufactured Urgency & Account Suspension Threat",
+          "description": "Pressures the recipient with imminent account termination, legal repercussions, or service disruption to force immediate compliance without critical reflection.",
+          "severity": "high",
+          "category": "Psychological Coercion",
+          "evidence": "account will be blocked today",
+          "weight": 35
+        }
+      ],
+      "tactics": [
+        "Psychological Coercion",
+        "Suspicious URL Engineering"
+      ],
+      "recommendations": [
+        "Exercise caution. Independently verify the message through the official service app or website.",
+        "Do not use phone numbers or web addresses provided inside this unsolicited message.",
+        "URL Alert: Unencrypted HTTP protocol used; legitimate sensitive services require HTTPS.",
+        "URL Alert: Domain uses high-abuse top-level domain (.xyz) frequently leveraged for disposable phishing sites."
+      ],
+      "engine_type": "heuristics",
+      "created_at": "2026-10-15T12:36:35.512Z"
+    },
+    {
+      "id": "scan_1792067795516_d5a04de8",
+      "user_id": "usr_demo_101",
+      "input_type": "sms",
+      "detected_language": "en",
+      "content_snippet": "Suspicious alert for testing",
+      "content_hash": "hash_test_demo_101",
+      "risk_score": 85,
+      "risk_level": "critical",
+      "indicators": [
+        {
+          "id": "urgency_1",
+          "title": "Urgency Coercion",
+          "description": "Urgent demand detected",
+          "severity": "critical",
+          "category": "urgency"
+        }
+      ],
+      "tactics": [
+        "Urgency coercion"
+      ],
+      "recommendations": [
+        "Do not click"
+      ],
+      "engine_type": "heuristics",
+      "created_at": "2026-10-15T12:36:35.516Z"
+    },
+    {
+      "id": "scan_1792067795741_e3eef6c6",
+      "user_id": "test_screenshot_user",
+      "input_type": "screenshot",
+      "detected_language": "en",
+      "content_snippet": "Detected fake bank alert in screenshot",
+      "content_hash": "hash_screenshot_123",
+      "risk_score": 95,
+      "risk_level": "critical",
+      "indicators": [
+        {
+          "id": "fake_logo_01",
+          "title": "Counterfeit Bank Logo",
+          "description": "Visual logo impersonation detected.",
+          "severity": "high",
+          "category": "visual_spoofing"
+        }
+      ],
+      "tactics": [
+        "Visual Identity Impersonation"
+      ],
+      "recommendations": [
+        "Do not call the phone number in image."
+      ],
+      "engine_type": "gemini",
+      "created_at": "2026-10-15T12:36:35.741Z"
     }
   ],
   "feedback": [],

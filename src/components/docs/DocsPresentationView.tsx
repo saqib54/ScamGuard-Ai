@@ -329,6 +329,27 @@ export const DocsPresentationView: React.FC = () => {
             <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-medium">
               Comprehensive PRD, TRD, System Architecture Flows, and Interactive Slide Deck.
             </p>
+            {/* Direct Download Buttons for PPTX & PDF */}
+            <div className="flex items-center gap-2 mt-3 flex-wrap">
+              <a
+                href="/docs/ScamShield_Presentation.pptx"
+                download="ScamShield_Presentation.pptx"
+                className="clay-button-primary px-3 py-1.5 text-xs font-bold inline-flex items-center gap-1.5 shadow-xs"
+                title="Download 12-slide PowerPoint Presentation (.pptx)"
+              >
+                <Download className="w-3.5 h-3.5" />
+                <span>Download Slides (.pptx)</span>
+              </a>
+              <a
+                href="/docs/ScamShield_Documentation.pdf"
+                download="ScamShield_Documentation.pdf"
+                className="clay-button-secondary px-3 py-1.5 text-xs font-bold inline-flex items-center gap-1.5 shadow-xs text-slate-700 dark:text-slate-200"
+                title="Download Complete PRD & TRD Documentation (.pdf)"
+              >
+                <Download className="w-3.5 h-3.5" />
+                <span>Download Docs (.pdf)</span>
+              </a>
+            </div>
           </div>
 
           {/* Section Pills */}

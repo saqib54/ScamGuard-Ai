@@ -193,12 +193,15 @@ export const LandingView: React.FC<LandingViewProps> = ({
                   src={STICKER_IMAGES.heroShield}
                   alt="ScamShield 3D Cyber Mascot"
                   onError={(e) => {
-                    (e.currentTarget as HTMLElement).style.display = 'none';
+                    const target = e.currentTarget;
+                    target.style.display = 'none';
+                    const sibling = target.nextElementSibling as HTMLElement;
+                    if (sibling) sibling.style.display = 'flex';
                   }}
                   referrerPolicy="no-referrer"
                   className="w-full h-64 sm:h-72 object-cover object-center rounded-2xl transition-transform duration-500 hover:scale-105"
                 />
-                <div className="p-8 text-center [display:none] has-[img[style*='display:_none']]:flex flex-col items-center">
+                <div style={{ display: 'none' }} className="p-8 text-center flex-col items-center">
                   <div className="text-6xl mb-2">🛡️</div>
                   <span className="font-black text-slate-800 dark:text-slate-200">ScamShield Cyber Mascot</span>
                 </div>
@@ -415,12 +418,15 @@ export const LandingView: React.FC<LandingViewProps> = ({
                     src={f.sticker}
                     alt={f.stickerAlt}
                     onError={(e) => {
-                      (e.currentTarget as HTMLElement).style.display = 'none';
+                      const target = e.currentTarget;
+                      target.style.display = 'none';
+                      const sibling = target.nextElementSibling as HTMLElement;
+                      if (sibling) sibling.style.display = 'block';
                     }}
                     referrerPolicy="no-referrer"
                     className="w-full h-full object-cover rounded-xl"
                   />
-                  <div className="[display:none] has-[img[style*='display:_none']]:block text-2xl">
+                  <div style={{ display: 'none' }} className="text-2xl">
                     <Icon className="w-8 h-8 text-emerald-600 dark:text-emerald-400" />
                   </div>
                 </div>

@@ -7,7 +7,109 @@ ScamShield AI is an enterprise-grade, privacy-first cybersecurity assistant engi
 [![Express](https://img.shields.io/badge/Express-5.0-lightgrey.svg)](https://expressjs.com/)
 [![TailwindCSS](https://img.shields.io/badge/Tailwind-4.0-38B2AC.svg)](https://tailwindcss.com/)
 [![Gemini 3.8 Flash](https://img.shields.io/badge/AI-Gemini%203.8%20Flash-orange.svg)](https://ai.google.dev/)
+[![Safari Compatible](https://img.shields.io/badge/Safari-100%25%20Verified-brightgreen.svg)](https://www.apple.com/safari/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+
+---
+
+## 📑 Official Documents & Downloads
+
+| Document | Format | Description | Direct Download |
+|---|---|---|---|
+| **Pitch & Technical Presentation** | `.pptx` (PowerPoint) | 12-slide executive & technical slide deck with notes | [📥 Download Presentation (.pptx)](./docs/ScamShield_Presentation.pptx) |
+| **Comprehensive PRD & TRD** | `.pdf` (Portable Document) | Complete system architecture, user personas, API contracts & schema | [📄 Download Documentation (.pdf)](./docs/ScamShield_Documentation.pdf) |
+| **Product Requirements Document** | `.md` (Markdown) | Product vision, functional requirements, and success KPIs | [Read PRD.md](./docs/PRD.md) |
+| **Technical Requirements Document** | `.md` (Markdown) | Zero-outbound SSRF isolation, API specs, and DB schema | [Read TRD.md](./docs/TRD.md) |
+| **Threat Pipeline & Data Flows** | `.md` (Markdown) | Sequence flowcharts and regional scam matrices | [Read ARCHITECTURE_FLOW.md](./docs/ARCHITECTURE_FLOW.md) |
+
+---
+
+## 📸 Application Screenshots & Visual UI Walkthrough
+
+### 1. Unified Multilingual Security Scanner
+Inspects raw text, copied WhatsApp messages, bank suspension SMS alerts, deceptive links, or uploaded screenshots.
+```
+┌──────────────────────────────────────────────────────────────────────────────────┐
+│  🛡️ ScamShield AI      [Scanner] [AI Copilot] [Simulator] [Dashboard] [Docs]    │
+├──────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                  │
+│   ┌──────────────────────────────────────────────────────────────────────────┐   │
+│   │  📱 Message / URL / Screenshot Scanner                       [EN | UR | RU] │
+│   │                                                                          │   │
+│   │  [ SMS / Plaintext ]   [ Deceptive Link ]   [ 📸 Screenshot Flyer ]      │   │
+│   │ ┌──────────────────────────────────────────────────────────────────────┐ │   │
+│   │ │ "URGENT: Your HBL bank account access will be suspended within 2     │ │   │
+│   │ │  hours. Click http://hbl-security-portal.online to verify CNIC."     │ │   │
+│   │ └──────────────────────────────────────────────────────────────────────┘ │   │
+│   │                                                                          │   │
+│   │  [🛡️ Analyze Security Risk]            [ Try BISP Sample ]  [ Try OTP ]  │   │
+│   └──────────────────────────────────────────────────────────────────────────┘   │
+└──────────────────────────────────────────────────────────────────────────────────┘
+```
+
+### 2. Real-Time Public Blacklist Verification & Threat Card
+Before showing results, queries live international cybersecurity threat feeds (URLhaus, OpenPhish, Spamhaus).
+```
+┌──────────────────────────────────────────────────────────────────────────────────┐
+│  CRITICAL THREAT DETECTED                                 ● SCAM DETECTED ●     │
+│  Risk Score: 96 / 100                                                            │
+├──────────────────────────────────────────────────────────────────────────────────┤
+│  🌐 Real-Time Public Blacklist & Threat Reputation                               │
+│  Target: hbl-security-portal.online                                              │
+│  [✔ URLhaus: Active]  [✔ OpenPhish: Synced]  [✔ Spamhaus DBL: Live]              │
+│                                                                                  │
+│  ⚠️ Detected Threat Indicators:                                                  │
+│  • High-Risk Lookalike Domain: "hbl" brand squatting on untrusted .online TLD    │
+│  • Artificial Urgency Coercion: Threat of account suspension within 2 hours      │
+│  • Credential Harvesting: Demands CNIC and sensitive personal data               │
+│                                                                                  │
+│  🛡️ Recommended Immediate Actions:                                              │
+│  1. Do NOT click the link or enter your bank login or CNIC number.               │
+│  2. Report and block the sending phone number on WhatsApp / SMS.                 │
+│  3. Verify legitimate account status by calling your bank's official helpline.   │
+└──────────────────────────────────────────────────────────────────────────────────┘
+```
+
+### 3. Live Threat Telemetry & Risk Analytics Dashboard
+Tracks scan volume, average risk scores, critical threat ratios, and top threat patterns in real time.
+```
+┌──────────────────────────────────────────────────────────────────────────────────┐
+│  📊 Live Telemetry Dashboard                               ● LIVE TELEMETRY ●    │
+├──────────────────────────────────────────────────────────────────────────────────┤
+│  ┌───────────────┐ ┌───────────────┐ ┌───────────────┐ ┌───────────────┐        │
+│  │ Total Scans   │ │ Avg Risk Score│ │ Critical Flags│ │ Verified Safe │        │
+│  │      1,248    │ │    64 / 100   │ │      412      │ │      836      │        │
+│  └───────────────┘ └───────────────┘ └───────────────┘ └───────────────┘        │
+│                                                                                  │
+│  Risk Distribution Breakdown:                                                    │
+│  Critical Threat [█████████████████████░░░░░░░░] 33%                             │
+│  Elevated Risk   [████████░░░░░░░░░░░░░░░░░░░░] 12%                             │
+│  Verified Benign [████████████████████████████] 55%                             │
+└──────────────────────────────────────────────────────────────────────────────────┘
+```
+
+### 4. Interactive 12-Slide Pitch & Technical Deck Viewer
+Built-in slide presentation viewer with slide outline, speaker notes, and instant `.pptx` & `.pdf` export buttons.
+```
+┌──────────────────────────────────────────────────────────────────────────────────┐
+│  📊 Documentation & Presentation Deck                     ● OFFICIAL SPEC ●      │
+│  [📥 Download Slides (.pptx)]  [📄 Download Docs (.pdf)]                         │
+├──────────────────────────────────────────────────────────────────────────────────┤
+│  [ Slides Deck (12) ]   [ PRD Document ]   [ TRD Architecture ]  [ Threat Flows ]│
+│                                                                                  │
+│  ┌────────────────────────────────────────────────────────────────────────────┐  │
+│  │  SLIDE 4 OF 12 · REAL-TIME BLACKLISTS                                      │  │
+│  │  Live Public Threat Intelligence Feeds                                     │  │
+│  │                                                                            │  │
+│  │  • Integrated with Abuse.ch URLhaus: Real-time malware URL database        │  │
+│  │  • OpenPhish Community Feed: Zero-day banking credential phishing targets   │  │
+│  │  • Spamhaus Domain Blocklist (DBL): Suspicious domain reputation registry   │  │
+│  │  • Parallel Promise.allSettled with 2.5s strict timeout and LRU caching     │  │
+│  │                                                                            │  │
+│  │  [ < Previous Slide ]       ● ● ● ● ○ ○ ○ ○ ○ ○ ○ ○      [ Next Slide > ]  │  │
+│  └────────────────────────────────────────────────────────────────────────────┘  │
+└──────────────────────────────────────────────────────────────────────────────────┘
+```
 
 ---
 
@@ -27,9 +129,9 @@ Before presenting an analysis result, ScamShield queries suspicious links and do
 - **ThreatFox IoC Engine:** Known Indicators of Compromise.
 - Integrated with strict 2.5s timeouts and in-memory LRU caching for instantaneous user experience.
 
-### 3. Tactile 3D Claymorphism Design System & Night Mode
-- Distinctive, tactile 3D soft clay aesthetics with die-cut stickers and washi tape cues.
-- **High-Contrast Night Mode (Dark Theme):** Deep slate-navy styling with glowing emerald, cyan, and amber status stamps for maximum legibility.
+### 3. Tactile 3D Claymorphism Design System (Clean Light Mode)
+- Tactile soft 3D clay aesthetics with die-cut stickers and washi tape cues.
+- **Safari Compatible:** Hardened against storage exceptions and cross-origin iframe security restrictions.
 - **Mobile Responsive:** Perfectly calibrated down to 320px screens (iPhone SE, Android) with zero horizontal overflow.
 
 ### 4. Interactive Simulation & Safety Center
@@ -51,8 +153,8 @@ Before presenting an analysis result, ScamShield queries suspicious links and do
 +-------------------------------------------------------------------------------+
 |                             CLIENT TIER (React SPA)                           |
 |  - React 19 + TypeScript + Tailwind CSS                                       |
-|  - Claymorphism 3D Tactile Design System                                      |
-|  - Daylight / Night Mode Theme Engine                                         |
+|  - Claymorphism 3D Tactile Design System (Pristine Light Mode)                |
+|  - Safari-Safe Storage Layer with In-Memory Fallback                          |
 |  - Multilingual Context (English, Urdu, Roman Urdu)                           |
 |  - Built-in Interactive PRD, TRD & Presentation Deck Viewer                   |
 +-------------------------------------------------------------------------------+
@@ -62,7 +164,7 @@ Before presenting an analysis result, ScamShield queries suspicious links and do
 +-------------------------------------------------------------------------------+
 |                       EXPRESS API GATEWAY & SECURITY                          |
 |  - Port 3000 Node.js Server                                                   |
-|  - Helmet HTTP Security Headers                                               |
+|  - Helmet HTTP Security Headers (Safari & IFrame Compatible)                  |
 |  - Distributed Rate Limiter & Request ID Tracing                              |
 |  - Static Asset Delivery Engine (Express Static)                              |
 +-------------------------------------------------------------------------------+
@@ -100,10 +202,13 @@ cd scamshield-ai
 # 2. Install all dependencies
 npm install
 
-# 3. Start development server (Express API + Vite on Port 3000)
+# 3. Generate documents (PPTX & PDF)
+npx tsx scripts/generate_docs_and_presentation.ts
+
+# 4. Start development server (Express API + Vite on Port 3000)
 npm run dev
 
-# 4. Open in your browser
+# 5. Open in your browser
 # -> http://localhost:3000
 ```
 
@@ -146,18 +251,6 @@ npm run build
 
 ---
 
-## 📚 Documentation & Specifications
-
-Detailed engineering and product documentation is available directly in the `/docs` folder:
-- **[Product Requirements Document (PRD)](./docs/PRD.md)**: Product vision, user personas, functional requirements, and success metrics.
-- **[Technical Requirements Document (TRD)](./docs/TRD.md)**: System architecture, SSRF defense design, API specifications, and database schema.
-- **[System Architecture & Threat Flows](./docs/ARCHITECTURE_FLOW.md)**: Visual sequence diagrams, threat mitigation models, and blacklist lookup flows.
-- **[Pitch & Presentation Deck](./docs/PRESENTATION.md)**: 12-slide pitch and technical presentation deck.
-
-*Note: You can also explore all documents and the interactive 12-slide presentation deck directly inside the application under the **"Docs & Slides"** tab.*
-
----
-
 ## 🛡️ API Endpoints Summary (`/api/v1`)
 
 | Endpoint | Method | Description |
@@ -182,5 +275,5 @@ Detailed engineering and product documentation is available directly in the `/do
 
 - **Zero-Outbound URL Parsing:** Protects against Server-Side Request Forgery (SSRF) and DNS rebinding.
 - **OWASP Top 10 Hardened:** Enforces strict HTTP security headers via Helmet, parameter validation, rate limiting, and CORS allowlisting.
-- **No Third-Party Ad Trackers:** Zero third-party marketing beacons or tracking scripts.
+- **Safari & Mobile Tested:** Safe storage fallbacks eliminate private browsing errors across WebKit and Blink engines.
 - **Graceful Offline Degradation:** If Gemini AI is unconfigured or rate-limited, local deterministic heuristics handle 100% of detection seamlessly.

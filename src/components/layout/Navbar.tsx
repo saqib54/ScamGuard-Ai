@@ -40,17 +40,20 @@ export const Navbar: React.FC<NavbarProps> = ({ currentTab, onSelectTab, onOpenA
             onClick={() => onSelectTab('landing')}
             className="flex items-center gap-2.5 sm:gap-3 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-700 rounded-xl group"
           >
-            <div className="clay-sticker p-0.5 rounded-2xl transition-transform group-hover:scale-105 group-hover:rotate-3 shadow-md shrink-0 bg-emerald-600/10 flex items-center justify-center">
+            <div className="clay-sticker p-0.5 rounded-2xl transition-transform group-hover:scale-105 group-hover:rotate-3 shadow-md shrink-0 bg-emerald-600/10 flex items-center justify-center w-10 h-10">
               <img
                 src={STICKER_IMAGES.securitySeal}
                 alt="ScamShield 3D Clay Seal"
                 onError={(e) => {
-                  (e.currentTarget as HTMLElement).style.display = 'none';
+                  const target = e.currentTarget;
+                  target.style.display = 'none';
+                  const sibling = target.nextElementSibling as HTMLElement;
+                  if (sibling) sibling.style.display = 'block';
                 }}
                 referrerPolicy="no-referrer"
                 className="w-9 h-9 sm:w-10 sm:h-10 object-cover rounded-xl"
               />
-              <span className="text-xl sm:text-2xl [display:none] group-has-[img[style*='display:_none']]:inline-block group-has-[img[style*='display: none']]:inline-block">🛡️</span>
+              <span style={{ display: 'none' }} className="text-xl">🛡️</span>
             </div>
             <div>
               <span className="text-sm sm:text-base font-black tracking-tight text-slate-900 dark:text-slate-100 block leading-tight">

@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { User } from '../types/index.ts';
+import { safeStorage } from '../utils/storage.ts';
 
 interface AuthContextType {
   user: User | null;
@@ -16,15 +17,15 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
-  const [token, setToken] = useState<string | null>(() => localStorage.getItem('scamshield_token'));
+  const [token, setToken] = useState<string | null>(() => safeStorage.getItem('scamshield_token'));
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   // Persistent guest session ID for guest analyses
   const [guestSessionId] = useState<string>(() => {
-    let id = localStorage.getItem('scamshield_guest_id');
+    let id = safeStorage.getItem('scamshield_guest_id');
     if (!id) {
       id = `guest_${Math.random().toString(36).substring(2, 10)}_${Date.now().toString(36)}`;
-      localStorage.setItem('scamshield_guest_id', id);
+      safeStorage.setItem('scamshield_guest_id', id);
     }
     return id;
   });
@@ -56,7 +57,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
           setUser(data.user);
         } else {
           // Token expired or invalid
-          localStorage.removeItem('scamshield_token');
+          safeStorage.removeItem('scamshield_token');
           setToken(null);
           setUser(null);
         }
@@ -83,7 +84,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       }
       setUser(data.user);
       setToken(data.token);
-      localStorage.setItem('scamshield_token', data.token);
+      safeStorage.setItem('scamshield_token', data.token);
       return { success: true };
     } catch {
       return { success: false, error: 'Network error communicating with authentication service.' };
@@ -103,7 +104,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       }
       setUser(data.user);
       setToken(data.token);
-      localStorage.setItem('scamshield_token', data.token);
+      safeStorage.setItem('scamshield_token', data.token);
       return { success: true };
     } catch {
       return { success: false, error: 'Network error communicating with authentication service.' };
@@ -117,7 +118,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         headers: { Authorization: `Bearer ${token}` }
       }).catch(() => {});
     }
-    localStorage.removeItem('scamshield_token');
+    safeStorage.removeItem('scamshield_token');
     setToken(null);
     setUser(null);
   };

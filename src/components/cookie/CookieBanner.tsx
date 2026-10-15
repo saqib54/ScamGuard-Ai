@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Cookie, ShieldCheck, X } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext.tsx';
+import { safeStorage } from '../../utils/storage.ts';
 
 interface CookieBannerProps {
   onOpenPreferences?: () => void;
@@ -18,7 +19,7 @@ export const CookieBanner: React.FC<CookieBannerProps> = ({
   const [analyticsConsent, setAnalyticsConsent] = useState<boolean>(false);
 
   useEffect(() => {
-    const consent = localStorage.getItem('scamshield_cookie_consent');
+    const consent = safeStorage.getItem('scamshield_cookie_consent');
     if (!consent || forceOpen) {
       setIsVisible(true);
       if (consent) {
@@ -30,19 +31,19 @@ export const CookieBanner: React.FC<CookieBannerProps> = ({
   }, [forceOpen]);
 
   const handleAcceptAll = () => {
-    localStorage.setItem('scamshield_cookie_consent', 'all');
+    safeStorage.setItem('scamshield_cookie_consent', 'all');
     setIsVisible(false);
     if (onCloseForce) onCloseForce();
   };
 
   const handleRejectOptional = () => {
-    localStorage.setItem('scamshield_cookie_consent', 'necessary');
+    safeStorage.setItem('scamshield_cookie_consent', 'necessary');
     setIsVisible(false);
     if (onCloseForce) onCloseForce();
   };
 
   const handleSaveCustom = () => {
-    localStorage.setItem('scamshield_cookie_consent', analyticsConsent ? 'all' : 'necessary');
+    safeStorage.setItem('scamshield_cookie_consent', analyticsConsent ? 'all' : 'necessary');
     setIsVisible(false);
     setShowCustomize(false);
     if (onCloseForce) onCloseForce();

@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
+import { safeStorage } from '../utils/storage.ts';
 
 type Theme = 'light' | 'dark';
 
@@ -12,14 +13,12 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  // Always default to pristine Light Mode as requested ("BACK PREVIOUS LIGHT MODE ONLY")
   const [theme, setThemeState] = useState<Theme>(() => {
     try {
-      const stored = localStorage.getItem('scamshield_theme');
+      const stored = safeStorage.getItem('scamshield_theme');
       if (stored === 'light' || stored === 'dark') {
         return stored;
-      }
-      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        return 'dark';
       }
     } catch {
       // ignore
@@ -39,7 +38,7 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
       root.style.colorScheme = 'light';
     }
     try {
-      localStorage.setItem('scamshield_theme', theme);
+      safeStorage.setItem('scamshield_theme', theme);
     } catch {
       // ignore
     }

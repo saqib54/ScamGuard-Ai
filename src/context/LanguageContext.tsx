@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { SupportedLanguage } from '../types/index.ts';
 import { translations } from '../i18n/translations.ts';
+import { safeStorage } from '../utils/storage.ts';
 
 interface LanguageContextType {
   language: SupportedLanguage;
@@ -13,14 +14,14 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 
 export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [language, setLanguageState] = useState<SupportedLanguage>(() => {
-    const saved = localStorage.getItem('scamshield_lang');
+    const saved = safeStorage.getItem('scamshield_lang');
     return (saved === 'ur' || saved === 'ru' || saved === 'en') ? saved : 'en';
   });
 
   const isRtl = language === 'ur';
 
   useEffect(() => {
-    localStorage.setItem('scamshield_lang', language);
+    safeStorage.setItem('scamshield_lang', language);
     document.documentElement.dir = isRtl ? 'rtl' : 'ltr';
     document.documentElement.lang = language;
   }, [language, isRtl]);

@@ -25,11 +25,14 @@ async function startServer() {
   const PORT = parseInt(process.env.PORT || '3000', 10);
   const isProduction = process.env.NODE_ENV === 'production';
 
-  // 1. Security Headers (configured safely for development iFrame embedding)
+  // 1. Security Headers (configured safely for Safari and development iFrame embedding)
   app.use(
     helmet({
       contentSecurityPolicy: false, // Vite inline dev scripts and iFrame embedding support
       crossOriginEmbedderPolicy: false,
+      crossOriginOpenerPolicy: false,
+      crossOriginResourcePolicy: false,
+      xFrameOptions: false,
     })
   );
 
