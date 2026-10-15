@@ -13,6 +13,9 @@ ScamShield AI is an enterprise-grade, privacy-first cybersecurity assistant engi
 [![Light Mode](https://img.shields.io/badge/Theme-Crisp%20Clay%20Light%20Mode-FACC15.svg)](#)
 
 ---
+## Try Demo Here
+https://aistudio.google.com/apps/54303926-70a3-4f36-885d-327d5128d348?showAssistant=true&showPreview=true&fullscreenApplet=true
+---
 
 ## 📑 Official Documents & Downloads
 
