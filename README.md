@@ -25,7 +25,45 @@ ScamShield AI is an enterprise-grade, privacy-first cybersecurity assistant engi
 | **Technical Requirements Document** | `.md` (Markdown) | Zero-outbound SSRF isolation, API specs, and DB schema | [Read TRD.md](./docs/TRD.md) |
 | **Threat Pipeline & Data Flows** | `.md` (Markdown) | Sequence flowcharts and regional scam matrices | [Read ARCHITECTURE_FLOW.md](./docs/ARCHITECTURE_FLOW.md) |
 
----
+---<!-- ScamShield AI Screenshots -->
+
+## Pictures
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/e395ffde-3e91-4718-b41d-2549711eec2d" width="900" alt="ScamShield AI Screenshot 1" />
+</p>
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/e70e7b4b-e798-4b17-933a-012eb473b6fa" width="900" alt="ScamShield AI Screenshot 2" />
+</p>
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/308c4314-7544-4e54-b468-6f4a7143865b" width="900" alt="ScamShield AI Screenshot 3" />
+</p>
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/ef52c0f2-efd9-4102-abee-e2768fad55df" width="900" alt="ScamShield AI Screenshot 4" />
+</p>
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/fb270b7d-3b8c-4af6-8b9d-2a6d5b565755" width="900" alt="ScamShield AI Screenshot 5" />
+</p>
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/83cba2f3-854e-43cb-b8ae-82145aded643" width="900" alt="ScamShield AI Screenshot 6" />
+</p>
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/d52a0988-2d1d-4f2d-9861-737b0df94da8" width="900" alt="ScamShield AI Screenshot 7" />
+</p>
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/1bf6e800-4b4d-46e4-b3fb-5de4707e7016" width="900" alt="ScamShield AI Screenshot 8" />
+</p>
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/960d935c-1de0-4348-94c1-b8e249bd73ca" width="900" alt="ScamShield AI Screenshot 9" />
+</p>
 
 ## ☁️ Netlify Deployment: Frontend + Backend Together
 
